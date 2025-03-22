@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head :: head}"></div>
+<body class="index-page">
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar::top_bar}"></div>
+    <div th:replace="~{master/navmenu::nav_menu}"></div>
+</header>
+<main>
+    <!--Content-->
+    <th:block th:fragment="content">
+        <section id="hero" class="hero section">
+            <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-item active">
+                    <img th:src="@{assets/img/hero-carousel/hero-carousel-2.jpg}" alt="">
+                    <div class="container">
+                        <h2>Welcome to UTSpa</h2>
+                        <p>Nơi mang đến trải nghiệm thư giãn và chăm sóc sắc đẹp hoàn hảo. Chúng tôi tự hào cung cấp các dịch vụ spa cao cấp, giúp quý khách giải tỏa căng thẳng, phục hồi năng lượng và tỏa sáng với làn da khỏe mạnh. Hãy tận hưởng không gian sang trọng, dịch vụ chuyên nghiệp và sự chăm sóc tận tâm từ đội ngũ chuyên viên của chúng tôi. UTSpa – nơi đánh thức vẻ đẹp và sự thư giãn đích thực!</p>
+                        <a th:href="@{/master/about}" class="btn-get-started">Read More</a>
+                    </div>
+                </div><!-- End Carousel Item -->
+            </div>
+        </section>
+
+        <section id="featured-services" class="featured-services section">
+
+            <div class="container">
+
+                <div class="row gy-4">
+
+                    <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                        <div class="service-item position-relative">
+                            <div class="icon"><i class="fas fa-heartbeat icon"></i></div>
+                            <h4><a th:href="@{/master/service}" class="stretched-link">Massage thư giãn</a></h4>
+                            <p>Giải tỏa căng thẳng, phục hồi năng lượng với các phương pháp massage chuyên nghiệp.</p>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-item position-relative">
+                            <div class="icon"><i class="fas fa-pills icon"></i></div>
+                            <h4><a th:href="@{/master/service}" class="stretched-link">Chăm sóc da mặt</a></h4>
+                            <p>Tận hưởng liệu trình chăm sóc da chuyên sâu giúp da sáng khỏe và tươi trẻ.</p>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-item position-relative">
+                            <div class="icon"><i class="fas fa-seedling"></i></div>
+                            <h4><a th:href="@{/master/service}" class="stretched-link">Gội đầu dưỡng sinh</a></h4>
+                            <p>Thư giãn cùng liệu trình gội đầu kết hợp massage, giúp giảm stress và lưu thông khí huyết.</p>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                    <div class="col-xl-3 col-md-6 d-flex aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
+                        <div class="service-item position-relative">
+                            <div class="icon"><i class="fas fa-dna icon"></i></div>
+                            <h4><a th:href="@{/master/service}" class="stretched-link">Triệt lông công nghệ cao</a></h4>
+                            <p>Công nghệ triệt lông an toàn, giúp làn da mịn màng và không còn lo ngại về vi-ô-lông.</p>
+                        </div>
+                    </div><!-- End Service Item -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="call-to-action" class="call-to-action section accent-background">
+
+            <div class="container">
+                <div class="row justify-content-center aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-xl-10">
+                        <div class="text-center">
+                            <h3>Bạn muốn biết tình trạng da của mình?</h3>
+                            <a class="cta-btn" th:href="@{/master/quiz}">Làm trắc nghiệm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </th:block>
+    <!--/Content-->
+</main>
+
+</body>
+<div th:replace="~{master/footer::footer}"></div>
+</html>

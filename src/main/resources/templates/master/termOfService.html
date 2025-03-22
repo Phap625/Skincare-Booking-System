@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head :: head}"></div>
+
+
+<body class="index-page">
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar::top_bar}"></div>
+    <div th:replace="~{master/navmenu::nav_menu}"></div>
+</header>
+
+<th:block th:fragment="content">
+    <div class="container" style="max-width: 800px; margin: auto;">
+        <h1><strong>Điều khoản dịch vụ</strong></h1>
+        <p>Chào mừng bạn đến với dịch vụ của chúng tôi. Vui lòng đọc kỹ các điều khoản dưới đây trước khi sử dụng.</p>
+
+        <div class="section">
+            <h2><strong>1. Chấp nhận điều khoản</strong></h2>
+            <p>Bằng cách sử dụng dịch vụ của chúng tôi, bạn đồng ý tuân thủ tất cả các điều khoản đã được đề ra.
+                Nếu bạn không đồng ý với bất kỳ điều khoản nào, vui lòng không tiếp tục sử dụng dịch vụ.
+                Chúng tôi có quyền cập nhật điều khoản bất cứ lúc nào và sẽ thông báo nếu có thay đổi quan trọng.
+                Việc tiếp tục sử dụng dịch vụ sau khi có thay đổi đồng nghĩa với việc bạn chấp nhận các điều khoản mới.
+                Người dùng có trách nhiệm thường xuyên kiểm tra điều khoản để cập nhật thông tin.
+                Trong trường hợp có tranh chấp về điều khoản, quyết định của chúng tôi sẽ là quyết định cuối cùng.
+                Nếu bạn dưới độ tuổi quy định, bạn cần có sự đồng ý của phụ huynh hoặc người giám hộ hợp pháp.
+                Chúng tôi không chịu trách nhiệm nếu bạn sử dụng dịch vụ mà không tuân thủ điều khoản này.
+                Nếu bạn có bất kỳ câu hỏi nào về điều khoản, vui lòng liên hệ với chúng tôi để được giải đáp.
+                Điều khoản này có hiệu lực ngay khi bạn bắt đầu sử dụng dịch vụ.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>2. Quyền và trách nhiệm của người dùng</strong></h2>
+            <p>Bạn có trách nhiệm sử dụng dịch vụ một cách hợp pháp, không vi phạm các quy định của pháp luật hiện hành.
+                Không sử dụng dịch vụ để thực hiện các hành vi gian lận, lừa đảo hoặc gây ảnh hưởng tiêu cực đến người khác.
+                Bạn không được phép xâm nhập, tấn công hoặc gây tổn hại đến hệ thống dịch vụ và cơ sở dữ liệu của chúng tôi.
+                Không được tạo hoặc sử dụng tài khoản giả mạo để thực hiện các hành vi trái phép.
+                Bạn chịu trách nhiệm bảo mật thông tin đăng nhập và không chia sẻ với người khác.
+                Nếu phát hiện có hành vi sử dụng trái phép tài khoản, bạn phải thông báo ngay cho chúng tôi.
+                Chúng tôi có quyền tạm ngừng hoặc chấm dứt tài khoản nếu phát hiện vi phạm.
+                Người dùng cần tuân thủ các hướng dẫn sử dụng dịch vụ để đảm bảo trải nghiệm tốt nhất.
+                Nếu bạn phát hiện bất kỳ hành vi vi phạm nào từ người dùng khác, hãy báo cáo cho chúng tôi.
+                Chúng tôi có quyền xem xét và xử lý các hành vi vi phạm theo chính sách nội bộ.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>3. Thu thập và sử dụng dữ liệu</strong></h2>
+            <p>Chúng tôi thu thập thông tin cá nhân của bạn khi bạn đăng ký tài khoản hoặc sử dụng dịch vụ.
+                Dữ liệu này bao gồm họ tên, địa chỉ email, số điện thoại và các thông tin khác liên quan.
+                Mục đích thu thập là để cải thiện trải nghiệm người dùng và tối ưu hóa dịch vụ.
+                Chúng tôi cam kết bảo vệ thông tin cá nhân của bạn và tuân thủ các quy định bảo mật.
+                Dữ liệu thu thập sẽ không được bán hoặc chia sẻ với bên thứ ba nếu không có sự đồng ý của bạn.
+                Bạn có quyền truy cập, chỉnh sửa hoặc yêu cầu xóa thông tin cá nhân của mình.
+                Nếu bạn không muốn nhận thông báo từ chúng tôi, bạn có thể hủy đăng ký bất cứ lúc nào.
+                Dữ liệu cá nhân có thể được sử dụng để nghiên cứu, phân tích xu hướng và phát triển sản phẩm.
+                Chúng tôi có thể sử dụng cookie và công nghệ theo dõi để cải thiện chất lượng dịch vụ.
+                Nếu có thay đổi trong chính sách dữ liệu, chúng tôi sẽ thông báo cho bạn kịp thời.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>4. Điều khoản thanh toán</strong></h2>
+            <p>Nếu dịch vụ của chúng tôi có tính phí, bạn cần thanh toán đầy đủ trước khi sử dụng.
+                Các khoản thanh toán không thể hoàn lại trừ khi có quy định khác trong chính sách hoàn tiền.
+                Chúng tôi có quyền điều chỉnh mức phí dịch vụ và sẽ thông báo trước nếu có thay đổi.
+                Nếu bạn sử dụng phương thức thanh toán qua bên thứ ba, bạn cần tuân thủ điều khoản của bên đó.
+                Bạn có trách nhiệm cung cấp thông tin thanh toán chính xác và hợp lệ.
+                Trong trường hợp giao dịch thất bại hoặc bị từ chối, bạn cần kiểm tra lại phương thức thanh toán của mình.
+                Nếu phát hiện giao dịch trái phép, vui lòng thông báo ngay cho chúng tôi để xử lý.
+                Chúng tôi có quyền đình chỉ tài khoản nếu không nhận được thanh toán đúng hạn.
+                Nếu bạn có bất kỳ thắc mắc nào về thanh toán, hãy liên hệ với chúng tôi để được hỗ trợ.
+                Mọi khoản phí đều được hiển thị rõ ràng trước khi bạn xác nhận thanh toán.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>5. Sở hữu trí tuệ</strong></h2>
+            <p>Tất cả nội dung trên dịch vụ này bao gồm văn bản, hình ảnh, mã nguồn và thiết kế thuộc quyền sở hữu của chúng tôi.
+                Việc sao chép, chỉnh sửa hoặc phân phối nội dung mà không có sự cho phép là vi phạm bản quyền.
+                Bạn không được phép sử dụng nội dung dịch vụ cho mục đích thương mại mà không có sự đồng ý từ chúng tôi.
+                Nếu bạn phát hiện hành vi vi phạm bản quyền, vui lòng báo cáo để chúng tôi xử lý.
+                Nội dung do người dùng tạo ra sẽ vẫn thuộc quyền sở hữu của người tạo, trừ khi có thỏa thuận khác.
+                Chúng tôi có quyền sử dụng nội dung do bạn cung cấp để cải thiện dịch vụ.
+                Nếu bạn đóng góp ý tưởng hoặc phản hồi, chúng tôi có thể sử dụng mà không cần trả phí bản quyền.
+                Các nhãn hiệu, biểu tượng và tên thương mại trên dịch vụ đều thuộc quyền sở hữu hợp pháp.
+                Việc sử dụng trái phép nội dung của chúng tôi có thể dẫn đến các biện pháp pháp lý.
+                Chúng tôi tôn trọng quyền sở hữu trí tuệ của người dùng và bên thứ ba.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>6. Chấm dứt dịch vụ</strong></h2>
+            <p>Chúng tôi có quyền đình chỉ hoặc chấm dứt tài khoản của bạn nếu phát hiện vi phạm điều khoản.
+                Trong trường hợp vi phạm nghiêm trọng, tài khoản có thể bị khóa vĩnh viễn mà không cần thông báo trước.
+                Nếu bạn cho rằng tài khoản của mình bị đình chỉ nhầm lẫn, bạn có thể liên hệ với chúng tôi để được xem xét.
+                Chúng tôi không chịu trách nhiệm đối với bất kỳ tổn thất nào do việc chấm dứt tài khoản gây ra.
+                Người dùng cần tuân thủ đúng quy định để tránh bị đình chỉ dịch vụ.
+                Trong trường hợp chấm dứt dịch vụ, chúng tôi có quyền giữ lại hoặc xóa bỏ dữ liệu của bạn.
+                Nếu tài khoản bị đình chỉ do vi phạm thanh toán, bạn cần thanh toán các khoản nợ để mở lại dịch vụ.
+                Chúng tôi có quyền áp dụng các biện pháp pháp lý nếu vi phạm gây thiệt hại nghiêm trọng.
+                Việc sử dụng lại dịch vụ sau khi bị đình chỉ cần có sự chấp thuận của chúng tôi.
+                Bạn nên đọc kỹ điều khoản để hiểu rõ các trường hợp có thể bị chấm dứt dịch vụ.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>7. Liên hệ</strong></h2>
+            <p>Nếu có bất kỳ câu hỏi nào về điều khoản dịch vụ, vui lòng liên hệ qua email: support@example.com.
+                Chúng tôi luôn sẵn sàng hỗ trợ và giải đáp mọi thắc mắc của bạn.
+                Nếu bạn cần hỗ trợ khẩn cấp, vui lòng đề cập trong email để chúng tôi ưu tiên xử lý.
+                Đội ngũ hỗ trợ sẽ phản hồi trong vòng 24-48 giờ làm việc.
+                Khi liên hệ, vui lòng cung cấp đầy đủ thông tin liên quan để chúng tôi có thể hỗ trợ tốt nhất.
+                Nếu bạn muốn yêu cầu thay đổi hoặc xóa dữ liệu cá nhân, hãy nêu rõ trong email.
+                Mọi yêu cầu liên quan đến tài khoản hoặc thanh toán cần gửi từ email đã đăng ký.
+                Chúng tôi không hỗ trợ qua các kênh không chính thức để đảm bảo bảo mật thông tin.
+                Nếu bạn phát hiện bất kỳ hành vi vi phạm điều khoản, hãy báo cáo ngay cho chúng tôi.
+                Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</p>
+        </div>
+    </div>
+</th:block>>
+</body>
+<div th:replace="~{master/footer::footer}"></div>
+</html>

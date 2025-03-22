@@ -1,0 +1,27 @@
+<div th:fragment="nav_menu" class="branding d-flex align-items-center">
+
+    <div class="container position-relative d-flex align-items-center justify-content-end">
+        <a th:href="@{/}" class="logo d-flex align-items-center me-auto">
+            <img th:src="@{/assets/img/logo1.png}" alt="">
+             <h1 class="sitename">UTSpa</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+            <ul>
+                <li><a th:href="@{/}" class="active">Home</a></li>
+                <li><a th:href="@{/master/about}">About</a></li>
+                <li><a th:href="@{/master/service}" >Services</a></li>
+                <li><a th:href="@{/master/blog}">Blog</a></li>
+                <li><a th:href="@{/master/therapist}">Therapist</a></li>
+                <li><a th:href="@{/master/contact}">Contact</a></li>
+                <li><a th:href="@{/}">Login</a></li>
+
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <a class="cta-btn" th:href="@{/master/appointment}">Make an Appointment</a>
+
+    </div>
+
+</div>

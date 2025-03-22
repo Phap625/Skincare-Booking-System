@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head :: head}"></div>
+
+<body class="index-page">
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar::top_bar}"></div>
+    <div th:replace="~{master/navmenu::nav_menu}"></div>
+</header>
+
+<!-- Content-->
+<th:block th:fragment="content">
+    <div class="container" style="max-width: 1000px; margin: auto;">
+        <h1><strong>Chính sách bảo mật</strong></h1>
+        <p>Chúng tôi cam kết bảo vệ quyền riêng tư của bạn. Chính sách này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin của bạn.</p>
+
+        <div class="section">
+            <h2><strong>1. Thông tin chúng tôi thu thập</strong></h2>
+            <p>Chúng tôi thu thập thông tin cá nhân của bạn khi bạn đăng ký tài khoản, điền biểu mẫu hoặc liên hệ với chúng tôi.
+                Các thông tin bao gồm họ tên, địa chỉ email, số điện thoại, địa chỉ IP, thiết bị truy cập và dữ liệu hành vi người dùng.
+                Ngoài ra, chúng tôi có thể thu thập thông tin về sở thích, phản hồi của bạn và cách bạn sử dụng dịch vụ.
+                Dữ liệu này giúp chúng tôi cải thiện trải nghiệm người dùng và tối ưu hóa nền tảng.
+                Mọi thông tin được thu thập đều tuân thủ quy định bảo mật nghiêm ngặt.
+                Chúng tôi cam kết không thu thập thông tin quá mức cần thiết.
+                Nếu bạn không muốn chia sẻ thông tin, bạn có thể điều chỉnh cài đặt quyền riêng tư trong tài khoản.
+                Trong một số trường hợp, dữ liệu ẩn danh cũng có thể được sử dụng để phân tích tổng thể.
+                Thông tin cá nhân của bạn sẽ được bảo mật theo chính sách hiện hành.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>2. Cách chúng tôi sử dụng thông tin</strong></h2>
+            <p>Chúng tôi sử dụng thông tin để cung cấp, duy trì và nâng cao chất lượng dịch vụ.
+                Dữ liệu được sử dụng để quản lý tài khoản, hỗ trợ khách hàng và đảm bảo tính bảo mật.
+                Ngoài ra, chúng tôi có thể dùng thông tin để cá nhân hóa nội dung và đề xuất phù hợp với sở thích của bạn.
+                Dữ liệu thu thập cũng giúp chúng tôi phát hiện và ngăn chặn hành vi gian lận, bảo vệ hệ thống khỏi các cuộc tấn công.
+                Chúng tôi có thể sử dụng dữ liệu để phân tích xu hướng và nghiên cứu thị trường.
+                Thông tin cá nhân không được sử dụng ngoài phạm vi chính sách này.
+                Bạn có thể yêu cầu không nhận các thông tin quảng cáo hoặc thông báo từ hệ thống.
+                Chúng tôi cam kết sử dụng dữ liệu một cách minh bạch và tuân thủ quy định bảo mật.
+                Dữ liệu của bạn sẽ không bị lạm dụng hoặc khai thác bất hợp pháp.
+                Nếu có thay đổi trong mục đích sử dụng, chúng tôi sẽ thông báo cho bạn.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>3. Chia sẻ thông tin</strong></h2>
+            <p>Chúng tôi không chia sẻ thông tin cá nhân của bạn với bên thứ ba trừ khi có sự đồng ý của bạn.
+                Dữ liệu có thể được chia sẻ với các đối tác cung cấp dịch vụ hỗ trợ hệ thống như lưu trữ dữ liệu và thanh toán.
+                Các đối tác này phải tuân thủ các quy định bảo mật nghiêm ngặt.
+                Chúng tôi cũng có thể chia sẻ dữ liệu theo yêu cầu của cơ quan pháp luật hoặc trong trường hợp cần thiết để bảo vệ quyền lợi hợp pháp.
+                Mọi thông tin chia sẻ đều được thực hiện theo nguyên tắc minh bạch.
+                Nếu có thay đổi về chính sách chia sẻ, bạn sẽ được thông báo trước.
+                Chúng tôi không bán thông tin cá nhân của bạn cho bất kỳ bên thứ ba nào.
+                Trong một số trường hợp, dữ liệu ẩn danh có thể được sử dụng để nghiên cứu và phát triển dịch vụ.
+                Bạn có thể kiểm soát việc chia sẻ thông tin của mình thông qua cài đặt tài khoản.
+                Nếu bạn có bất kỳ thắc mắc nào, vui lòng liên hệ với chúng tôi.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>4. Bảo mật thông tin</strong></h2>
+            <p>Chúng tôi áp dụng các biện pháp kỹ thuật và tổ chức để bảo vệ thông tin cá nhân khỏi truy cập trái phép.
+                Dữ liệu của bạn được mã hóa và bảo vệ bằng tường lửa.
+                Chúng tôi thực hiện kiểm soát truy cập chặt chẽ để ngăn chặn rò rỉ thông tin.
+                Các hệ thống giám sát bảo mật được triển khai để phát hiện và ngăn chặn các mối đe dọa.
+                Nhân viên được đào tạo về bảo vệ dữ liệu cá nhân và tuân thủ các quy định bảo mật.
+                Chúng tôi thường xuyên cập nhật các biện pháp bảo mật để chống lại các rủi ro mới.
+                Nếu phát hiện sự cố bảo mật, chúng tôi sẽ thông báo và thực hiện biện pháp khắc phục ngay lập tức.
+                Bạn có thể yêu cầu thêm thông tin về cách chúng tôi bảo vệ dữ liệu của bạn.
+                Chúng tôi cam kết bảo vệ thông tin cá nhân theo tiêu chuẩn cao nhất.
+                Mọi vi phạm bảo mật sẽ được xử lý nghiêm ngặt theo chính sách nội bộ.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>5. Quyền lợi của bạn</strong></h2>
+            <p>Bạn có quyền truy cập, chỉnh sửa hoặc yêu cầu xóa thông tin cá nhân của mình.
+                Bạn cũng có thể yêu cầu hạn chế việc xử lý dữ liệu của mình.
+                Nếu bạn không muốn nhận thông tin quảng cáo, bạn có thể từ chối qua cài đặt tài khoản.
+                Chúng tôi cung cấp các công cụ để bạn kiểm soát quyền riêng tư của mình.
+                Bạn có thể yêu cầu bản sao dữ liệu cá nhân mà chúng tôi lưu trữ.
+                Nếu bạn có bất kỳ thắc mắc nào, vui lòng liên hệ với chúng tôi để được hỗ trợ.
+                Chúng tôi tôn trọng quyền lợi của bạn và cam kết bảo vệ dữ liệu cá nhân.
+                Nếu bạn nghi ngờ thông tin bị lạm dụng, hãy báo ngay cho chúng tôi.
+                Chúng tôi sẽ xử lý yêu cầu của bạn trong thời gian sớm nhất.
+                Bạn cũng có thể gửi khiếu nại về quyền riêng tư đến cơ quan quản lý liên quan.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>6. Thay đổi chính sách</strong></h2>
+            <p>Chúng tôi có thể cập nhật chính sách bảo mật để phản ánh các thay đổi trong dịch vụ hoặc yêu cầu pháp lý.
+                Khi có thay đổi quan trọng, chúng tôi sẽ thông báo trước qua email hoặc trên website chính thức.
+                Bạn nên kiểm tra chính sách này định kỳ để cập nhật thông tin mới nhất.
+                Các thay đổi sẽ có hiệu lực ngay khi được công bố, trừ khi có quy định khác.
+                Nếu bạn tiếp tục sử dụng dịch vụ sau khi chính sách mới có hiệu lực, điều đó có nghĩa là bạn chấp nhận các điều khoản mới.
+                Trong trường hợp không đồng ý với chính sách cập nhật, bạn có thể ngừng sử dụng dịch vụ.
+                Chúng tôi luôn sẵn sàng giải đáp các thắc mắc về những thay đổi trong chính sách.
+                Chính sách bảo mật của chúng tôi được xây dựng nhằm bảo vệ quyền lợi người dùng một cách tối ưu.
+                Chúng tôi cam kết minh bạch trong việc cập nhật và thực hiện các thay đổi.
+                Nếu có bất kỳ câu hỏi nào, bạn có thể liên hệ với chúng tôi để được hỗ trợ.</p>
+        </div>
+
+        <div class="section">
+            <h2><strong>7. Liên hệ</strong></h2>
+            <p>Nếu bạn có bất kỳ câu hỏi nào liên quan đến chính sách bảo mật, vui lòng liên hệ với chúng tôi qua các phương thức sau:
+                Email: <a href="mailto:privacy@example.com">privacy@example.com</a>.
+                Chúng tôi cam kết phản hồi yêu cầu của bạn trong thời gian sớm nhất.
+                Ngoài ra, bạn cũng có thể gửi thư đến địa chỉ văn phòng của chúng tôi nếu cần hỗ trợ chi tiết hơn.
+                Nếu bạn phát hiện bất kỳ vi phạm nào liên quan đến bảo mật dữ liệu, vui lòng thông báo ngay để chúng tôi có biện pháp khắc phục.
+                Chúng tôi luôn sẵn sàng tiếp nhận và xử lý các phản hồi của bạn để nâng cao chất lượng dịch vụ.
+                Để đảm bảo bảo mật tối đa, vui lòng không chia sẻ thông tin cá nhân nhạy cảm qua email công khai.
+                Nếu có bất kỳ thắc mắc nào về cách sử dụng thông tin cá nhân, chúng tôi sẽ giải thích chi tiết cho bạn.
+                Mọi ý kiến đóng góp của bạn đều rất quan trọng để chúng tôi hoàn thiện hệ thống bảo mật.
+                Chúng tôi mong muốn tạo ra một môi trường sử dụng an toàn và minh bạch cho tất cả người dùng.
+                Xin cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của chúng tôi.</p>
+        </div>
+    </div>
+</th:block>>
+</body>
+<div th:replace="~{master/footer::footer}"></div>
+</html>

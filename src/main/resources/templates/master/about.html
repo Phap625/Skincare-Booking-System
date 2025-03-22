@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head :: head}"></div>
+
+<body class="index-page">
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar::top_bar}"></div>
+    <div th:replace="~{master/navmenu::nav_menu}"></div>
+</header>
+
+<!-- Content-->
+<th:block th:fragment="content">
+    <!-- About Section -->
+    <section id="about" class="about section">
+            <!-- Section Title -->
+            <div class="container section-title" data-aos="fade-up">
+                <h2>About Us<br></h2>
+            </div><!-- End Section Title -->
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
+                        <img th:src="@{/assets/img/about.jpg}" class="img-fluid" alt="">
+                            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+                    </div>
+                    <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
+                        <h3>🌿Trải Nghiệm Thư Giãn Tuyệt Đối tại UTSpa🌿</h3>
+                        <p class="fst-italic">
+                            Tại UTSpa, chúng tôi mang đến cho bạn không gian thư giãn lý tưởng, nơi cơ thể và tâm hồn được chăm sóc trọn vẹn. Với các liệu pháp spa cao cấp cùng đội ngũ chuyên viên giàu kinh nghiệm, chúng tôi cam kết mang lại sự thoải mái và phục hồi năng lượng cho bạn.
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check2-all"></i> <span>Massage trị liệu giúp giảm căng thẳng và cải thiện tuần hoàn máu.</span></li>
+                            <li><i class="bi bi-check2-all"></i> <span>Liệu pháp chăm sóc da chuyên sâu, giúp làn da sáng mịn và tràn đầy sức sống.</span></li>
+                            <li><i class="bi bi-check2-all"></i> <span>Trị liệu thảo dược tự nhiên, mang đến cảm giác thư thái và nhẹ nhàng.</span></li>
+                        </ul>
+                        <p>
+                            🌺 Hãy đến với UTSpa, chúng tôi sẽ giúp bạn tìm lại sự cân bằng và thư giãn sau những ngày làm việc mệt mỏi. Trải nghiệm ngay hôm nay để tận hưởng những giây phút tuyệt vời nhất! 💖
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- /About Section -->
+
+        <!-- Features Section -->
+        <section id="features" class="features section">
+            <div class="container">
+                <div class="row justify-content-around gy-4">
+                    <div class="features-image col-lg-6" data-aos="fade-up" data-aos-delay="100"><img th:src="@{/assets/img/about.webp}" alt=""></div>
+
+                    <div class="col-lg-5 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                        <h3>Trải nghiệm Chăm sóc Da Hoàn Hảo tại UTSpa</h3>
+                        <p>Tận hưởng những liệu trình chăm sóc da chuyên sâu giúp làn da của bạn trở nên rạng rỡ và khỏe mạnh. Tại UTSpa, chúng tôi sử dụng các sản phẩm thiên nhiên kết hợp cùng công nghệ hiện đại để mang đến hiệu quả tối ưu nhất cho khách hàng.</p>
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fa-solid fa-heart flex-shrink-0"></i>
+                            <div>
+                                <h4><a class="stretched-link">Trusted For Generations</a></h4>
+                                <p>Thật tuyệt vời khi biết rằng UTSpa đang được “truyền lại” từ mẹ sang con gái – và thậm chí đến cả cháu gái của họ. Và đối với thế hệ người dùng trung thành tiếp theo của UTSpa, chúng tôi hứa sẽ tiếp tục mang đến các dịch vụ chăm sóc da tự nhiên mà khách hàng luôn tin tưởng và trân trọng.</p>
+                            </div>
+                        </div><!-- End Icon Box -->
+
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+                            <i class="fa-solid fa-leaf flex-shrink-0"></i>
+                            <div>
+                                <h4><a class="stretched-link">Natural Skin Care For All</a></h4>
+                                <p>Vì cam kết của chúng tôi đối với các thiết bị và máy móc an toàn, hiệu quả, hầu hết các dịch vụ của chúng tôi đều phù hợp với mọi loại da. Và nếu một dịch vụ cụ thể không phù hợp với tất cả các loại da, chúng tôi sẽ báo cáo với bạn.</p>
+                            </div>
+                        </div><!-- End Icon Box -->
+
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="500">
+                            <i class="fa-solid fa-prescription-bottle-medical flex-shrink-0"></i>
+                            <div>
+                                <h4><a class="stretched-link">Virtual Consultation</a></h4>
+                                <p>Đặt lịch chăm sóc da nhanh chóng , và web của chúng tôi sẽ trả lời các câu hỏi của bạn cũng như giúp bạn tùy chỉnh một quy trình chăm sóc da phù hợp.</p>
+                            </div>
+                        </div><!-- End Icon Box -->
+
+                        <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="600">
+                            <i class="fa-solid fa-dog flex-shrink-0"></i>
+                            <div>
+                                <h4><a class="stretched-link">Cruelty Free Skin Care</a></h4>
+                                <p>UTSpa cam kết không thử nghiệm trên động vật và đã duy trì nguyên tắc này từ khi thành lập. Chúng tôi chưa bao giờ thử nghiệm trên động vật và luôn tập trung vào việc tìm nguồn cung ứng thành phần cũng như các thành phần khác từ các doanh nghiệp có cùng triết lý..</p>
+                            </div>
+                        </div><!-- End Icon Box -->
+
+                    </div>
+                </div>
+            </div>
+        </section><!-- /Features Section -->
+</th:block>
+<!--/Content-->
+</body>
+<div th:replace="~{master/footer::footer}"></div>
+</html>
