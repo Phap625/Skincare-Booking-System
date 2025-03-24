@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyX Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">beauty<strong>x</strong></div>
+        <input type="text" placeholder="Bạn muốn tìm kiếm gì ?" class="search-bar">
+        <div class="actions">
+            <button>Trở thành đối tác</button>
+            <button>Đăng ký</button>
+            <button>Đăng nhập</button>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <a href="#">Thẩm Mỹ Viện</a>
+        <a href="#">Spa</a>
+        <a href="#">Salon Tóc</a>
+        <a href="#">Nha Khoa</a>
+        <a href="#">Nail</a>
+        <a href="#">Clinic</a>
+        <a href="#">Nối Mi</a>
+    </nav>
+
+    <section class="banner">
+        <img src="combo-giam-gia.png" alt="Combo Gội Đầu Thư Giãn">
+    </section>
+
+    <section class="utilities">
+        <div class="utility-item">Cộng đồng</div>
+        <div class="utility-item">Lịch hẹn</div>
+        <div class="utility-item">Mã giảm giá</div>
+        <div class="utility-item">Rewards</div>
+    </section>
+
+    <section class="category">
+        <h2>Danh mục nổi bật</h2>
+        <div class="category-list">
+            <div class="category-item">Thẩm Mỹ Mặt - Hàm</div>
+            <div class="category-item">Phun Xăm</div>
+            <div class="category-item">Trị Liệu Da</div>
+            <div class="category-item">Thẩm Mỹ Mặt</div>
+            <div class="category-item">Thẩm Mỹ Ngực</div>
+            <div class="category-item">Chăm Sóc Cơ Thể</div>
+            <div class="category-item">Chăm Sóc Da Mặt</div>
+            <div class="category-item">Trắng Da</div>
+        </div>
+    </section>
+</body>
+</html>
