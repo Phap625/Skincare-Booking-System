@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeautyX Clone</title>
+    <title> PSGbeauty Clone</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -28,7 +28,9 @@
     </nav>
 
     <section class="banner">
-        <img src="combo-giam-gia.png" alt="Combo Gội Đầu Thư Giãn">
+        <img src="https://htmediagroup.vn/wp-content/uploads/2022/07/Anh-beauty-doanh-nhan-5.jpg" alt="Sản phẩm làm đẹp">
+        <img src="https://top3.vn/uploads/source/users/153/spa-6.jpg" alt="Dịch vụ massage thư giãn">
+        <img src="https://vimed.org/wp-content/uploads/2022/12/dia-chi-lay-nhan-mun-ha-noi.jpg" alt="lấy nhân mụn">
     </section>
 
     <section class="utilities">
@@ -40,7 +42,8 @@
 
     <section class="promotion">
         <h2>Ưu đãi đặc biệt</h2>
-        <p>Giảm ngay <strong>50%</strong> cho 50 khách hàng đăng ký sử dụng dịch vụ đầu tiên .</p>
+        <p>Giảm ngay <strong>50%</strong> cho 10 khách hàng đầu tiên.</p>
+        <p>Giảm ngay <strong>20%</strong> cho khách hàng đến sử dụng combo lấy nhân mụn và làm đều màu da.</p>
     </section>
 
     <section class="category">
