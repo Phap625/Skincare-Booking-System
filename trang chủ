@@ -38,6 +38,11 @@
         <div class="utility-item">Rewards</div>
     </section>
 
+    <section class="promotion">
+        <h2>Ưu đãi đặc biệt</h2>
+        <p>Giảm ngay <strong>50%</strong> cho 50 khách hàng đăng ký sử dụng dịch vụ đầu tiên .</p>
+    </section>
+
     <section class="category">
         <h2>Danh mục nổi bật</h2>
         <div class="category-list">
