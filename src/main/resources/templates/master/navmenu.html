@@ -1,11 +1,26 @@
-<div th:fragment="nav_menu" class="branding d-flex align-items-center">
+<style>
+    .hidden {
+        display: none;
+    }
+    .dropdown {
+        display: none;
+        position: absolute;
+        background: white;
+        list-style: none;
+        padding: 10px;
+        border: 1px solid #ddd;
+    }
+    #userDropdown:hover .dropdown {
+        display: block;
+    }
+</style>
 
+<div th:fragment="nav_menu" class="branding d-flex align-items-center">
     <div class="container position-relative d-flex align-items-center justify-content-end">
         <a th:href="@{/}" class="logo d-flex align-items-center me-auto">
             <img th:src="@{/assets/img/logo1.png}" alt="">
              <h1 class="sitename">UTSpa</h1>
         </a>
-
         <nav id="navmenu" class="navmenu">
             <ul>
                 <li><a th:href="@{/}" class="active">Home</a></li>
@@ -14,7 +29,17 @@
                 <li><a th:href="@{/master/blog}">Blog</a></li>
                 <li><a th:href="@{/master/therapist}">Therapist</a></li>
                 <li><a th:href="@{/master/contact}">Contact</a></li>
-                <li><a th:href="@{/}">Login</a></li>
+                <li id="loginSection">
+                    <a th:href="@{/auths/login}">Login</a>
+                </li>
+                <li class="dropdown hidden" id="userDropdown">
+                    <span id="usernameDisplay"></span> <i class="bi bi-chevron-down toggle-dropdown"></i>
+                    <ul>
+                        <li><a th:href="@{/auths/profile}">Thông tin</a></li>
+                        <li><a href="#">Đăng xuất</a></li>
+
+                    </ul>
+                </li>
 
             </ul>
             <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -23,5 +48,5 @@
         <a class="cta-btn" th:href="@{/master/appointment}">Make an Appointment</a>
 
     </div>
-
 </div>
+

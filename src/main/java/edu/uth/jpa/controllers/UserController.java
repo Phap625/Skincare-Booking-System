@@ -15,7 +15,7 @@ public class UserController {
     public User createUser(@RequestBody User user) {
         return userServices.createUser(user);
     }
-    @GetMapping
+    @GetMapping()
     public List<User> Users() {
         return userServices.findAll();
     }

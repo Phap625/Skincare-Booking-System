@@ -1,127 +1,180 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" lang="en">
 <div th:replace="~{master/head :: head}"></div>
+
+
+<body class="index-page"><div th:replace="~{master/head :: head}"></div>
+
+
 <style>
-    .question { margin-bottom: 15px; }
-    .result { font-weight: bold; margin-top: 20px; }
+    .question { margin-bottom: 15px;  }
+    .button-custom {
+        background-color: #6a0dad; /* Màu tím */
+        color: white; /* Màu chữ */
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px; /* Bo góc */
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        /*margin: 20px auto;*/
+    }
+    .question-box {
+        border: 2px solid #ccc;  /* Viền màu xám */
+        border-radius: 10px;     /* Bo góc mềm mại */
+        padding: 15px;           /* Khoảng cách nội dung bên trong */
+        background-color: #f9f9f9; /* Màu nền nhẹ nhàng */
+        margin-bottom: 20px;     /* Khoảng cách giữa các câu hỏi */
+        width: 60%;              /* Chiều rộng của khung */
+        margin-left: auto;       /* Căn giữa theo chiều ngang */
+        margin-right: auto;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    }
+    .result {
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+        text-align: center;
+        /*opacity: 0; !* Ẩn kết quả ban đầu *!*/
+        transition: opacity 0.8s ease-in-out, transform 0.5s ease-in-out;
+        transform: translateY(10px); /* Dịch xuống 10px ban đầu */
+    }
 </style>
 
-<body class="index-page">
+
 <header id="header" class="header sticky-top">
     <div th:replace="~{master/topbar::top_bar}"></div>
     <div th:replace="~{master/navmenu::nav_menu}"></div>
 </header>
 
-<!-- Content-->
-<th:block th:fragment="content" >
-    <h2><strong>Trắc Nghiệm Tình Trạng Da</strong></h2>
-    <form id="quizForm">
-        <div class="question" id="q1">
-            <p>1. Sau khi rửa mặt khoảng 1 giờ, da bạn có cảm giác thế nào?</p>
-            <input type="radio" name="q1" value="A"> Vẫn mềm mịn, không quá khô hay nhờn<br>
-            <input type="radio" name="q1" value="B"> Căng khô, hơi khó chịu<br>
-            <input type="radio" name="q1" value="C"> Nhờn bóng, đặc biệt ở vùng chữ T<br>
-            <input type="radio" name="q1" value="D"> Một số vùng khô, một số vùng nhờn<br>
+<div style="width: 80%; margin: 0 auto; text-align: left;">
+    <th:block th:fragment="content">
+        <div style="text-align: center;margin-bottom: 50px;">
+            <h2><strong>Trắc Nghiệm Tình Trạng Da</strong></h2>
         </div>
+        <form id="quizForm">
+            <div class="question-box">
+                <div class="question" id="q1">
+                    <p><strong>1. Sau khi rửa mặt khoảng 1 giờ, da bạn có cảm giác thế nào?</strong></p>
+                    <input type="radio" name="q1" value="A"> Vẫn mềm mịn, không quá khô hay nhờn<br>
+                    <input type="radio" name="q1" value="B"> Căng khô, hơi khó chịu<br>
+                    <input type="radio" name="q1" value="C"> Nhờn bóng, đặc biệt ở vùng chữ T<br>
+                    <input type="radio" name="q1" value="D"> Một số vùng khô, một số vùng nhờn<br>
+                </div>
 
-        <div class="question" id="q2">
-            <p>2. Lỗ chân lông của bạn trông như thế nào?</p>
-            <input type="radio" name="q2" value="A"> Nhỏ, khó nhìn thấy<br>
-            <input type="radio" name="q2" value="B"> Rất nhỏ, đôi khi bị bong tróc<br>
-            <input type="radio" name="q2" value="C"> To và dễ nhận thấy<br>
-            <input type="radio" name="q2" value="D"> Không đồng đều, một số vùng to, một số vùng nhỏ<br>
-        </div>
-        <div class="question" id="q3">
-            <p>3. Da bạn có dễ bị kích ứng hay mẩn đỏ không?</p>
-            <input type="radio" name="q3" value="A"> Hiếm khi<br>
-            <input type="radio" name="q3" value="B"> Rất dễ bị kích ứng<br>
-            <input type="radio" name="q3" value="C"> Thỉnh thoảng, nhất là khi dùng mỹ phẩm lạ<br>
-            <input type="radio" name="q3" value="D"> Một số vùng dễ bị kích ứng, vùng khác thì không<br>
-        </div>
+                <div class="question" id="q2">
+                    <p><strong>2. Lỗ chân lông của bạn trông như thế nào?</strong></p>
+                    <input type="radio" name="q2" value="A"> Nhỏ, khó nhìn thấy<br>
+                    <input type="radio" name="q2" value="B"> Rất nhỏ, đôi khi bị bong tróc<br>
+                    <input type="radio" name="q2" value="C"> To và dễ nhận thấy<br>
+                    <input type="radio" name="q2" value="D"> Không đồng đều, một số vùng to, một số vùng nhỏ<br>
+                </div>
+                <div class="question" id="q3">
+                    <p><strong>3. Da bạn có dễ bị kích ứng hay mẩn đỏ không?</strong></p>
+                    <input type="radio" name="q3" value="A"> Hiếm khi<br>
+                    <input type="radio" name="q3" value="B"> Rất dễ bị kích ứng<br>
+                    <input type="radio" name="q3" value="C"> Thỉnh thoảng, nhất là khi dùng mỹ phẩm lạ<br>
+                    <input type="radio" name="q3" value="D"> Một số vùng dễ bị kích ứng, vùng khác thì không<br>
+                </div>
 
-        <div class="question" id="q4">
-            <p>4. Da bạn có bị bóng dầu vào giữa ngày không?</p>
-            <input type="radio" name="q4" value="A"> Không, da vẫn ổn định<br>
-            <input type="radio" name="q4" value="B"> Không, nhưng đôi khi hơi khô
-            <input type="radio" name="q4" value="C"> Có, vùng chữ T rất dầu<br>
-            <input type="radio" name="q4" value="D"> Một số vùng dầu, một số vùng khô<br>
-        </div>
+                <div class="question" id="q4">
+                    <p><strong>4. Da bạn có bị bóng dầu vào giữa ngày không?</strong></p>
+                    <input type="radio" name="q4" value="A"> Không, da vẫn ổn định<br>
+                    <input type="radio" name="q4" value="B"> Không, nhưng đôi khi hơi khô<br>
+                    <input type="radio" name="q4" value="C"> Có, vùng chữ T rất dầu<br>
+                    <input type="radio" name="q4" value="D"> Một số vùng dầu, một số vùng khô<br>
+                </div>
 
-        <div class="question" id="q5">
-            <p>5. Bạn có thường xuyên bị mụn không?</p>
-            <input type="radio" name="q5" value="A"> Rất hiếm khi<br>
-            <input type="radio" name="q5" value="B"> Hầu như không, nhưng da khô dễ bong tróc<br>
-            <input type="radio" name="q5" value="C"> Có, đặc biệt là mụn đầu đen và mụn trứng cá<br>
-            <input type="radio" name="q5" value="D"> Một số vùng có mụn, một số vùng không<br>
-        </div>
+                <div class="question" id="q5">
+                    <p><strong>5. Bạn có thường xuyên bị mụn không?</strong></p>
+                    <input type="radio" name="q5" value="A"> Rất hiếm khi<br>
+                    <input type="radio" name="q5" value="B"> Hầu như không, nhưng da khô dễ bong tróc<br>
+                    <input type="radio" name="q5" value="C"> Có, đặc biệt là mụn đầu đen và mụn trứng cá<br>
+                    <input type="radio" name="q5" value="D"> Một số vùng có mụn, một số vùng không<br>
+                </div>
 
-        <div class="question" id="q6">
-            <p>6. Bạn có cảm giác da bị căng sau khi rửa mặt không?</p>
-            <input type="radio" name="q6" value="A"> Không, da vẫn cân bằng<br>
-            <input type="radio" name="q6" value="B"> Có, da cảm thấy rất khô và căng<br>
-            <input type="radio" name="q6" value="C"> Không, nhưng da hơi bóng dầu<br>
-            <input type="radio" name="q6" value="D"> Một số vùng căng, một số vùng dầu<br>
-        </div>
+                <div class="question" id="q6">
+                    <p><strong>6. Bạn có cảm giác da bị căng sau khi rửa mặt không?</strong></p>
+                    <input type="radio" name="q6" value="A"> Không, da vẫn cân bằng<br>
+                    <input type="radio" name="q6" value="B"> Có, da cảm thấy rất khô và căng<br>
+                    <input type="radio" name="q6" value="C"> Không, nhưng da hơi bóng dầu<br>
+                    <input type="radio" name="q6" value="D"> Một số vùng căng, một số vùng dầu<br>
+                </div>
 
-        <div class="question" id="q7">
-            <p>7. Da bạn có thường xuyên bong tróc không?</p>
-            <input type="radio" name="q7" value="A"> Không, rất ít khi<br>
-            <input type="radio" name="q7" value="B"> Có, đặc biệt là vào mùa lạnh<br>
-            <input type="radio" name="q7" value="C"> Không, da chủ yếu bóng dầu<br>
-            <input type="radio" name="q7" value="D"> Một số vùng bong tróc, một số vùng không<br>
-        </div>
+                <div class="question" id="q7">
+                    <p><strong>7. Da bạn có thường xuyên bong tróc không?</strong></p>
+                    <input type="radio" name="q7" value="A"> Không, rất ít khi<br>
+                    <input type="radio" name="q7" value="B"> Có, đặc biệt là vào mùa lạnh<br>
+                    <input type="radio" name="q7" value="C"> Không, da chủ yếu bóng dầu<br>
+                    <input type="radio" name="q7" value="D"> Một số vùng bong tróc, một số vùng không<br>
+                </div>
 
-        <div class="question" id="q8">
-            <p>8. Bạn có cần dưỡng ẩm nhiều để da không bị khô không?</p>
-            <input type="radio" name="q8" value="A"> Không, da giữ ẩm tốt<br>
-            <input type="radio" name="q8" value="B"> Có, nếu không sẽ rất khô<br>
-            <input type="radio" name="q8" value="C"> Không, da đã đủ dầu tự nhiên<br>
-            <input type="radio" name="q8" value="D"> Một số vùng cần nhiều dưỡng ẩm hơn vùng khác<br>
-        </div>
+                <div class="question" id="q8">
+                    <p><strong>8. Bạn có cần dưỡng ẩm nhiều để da không bị khô không?</strong></p>
+                    <input type="radio" name="q8" value="A"> Không, da giữ ẩm tốt<br>
+                    <input type="radio" name="q8" value="B"> Có, nếu không sẽ rất khô<br>
+                    <input type="radio" name="q8" value="C"> Không, da đã đủ dầu tự nhiên<br>
+                    <input type="radio" name="q8" value="D"> Một số vùng cần nhiều dưỡng ẩm hơn vùng khác<br>
+                </div>
 
-        <div class="question" id="q9">
-            <p>9. Da bạn có bị sạm màu hoặc không đều màu không?</p>
-            <input type="radio" name="q9" value="A"> Không, da đều màu<br>
-            <input type="radio" name="q9" value="B"> Có, da dễ bị xỉn màu<br>
-            <input type="radio" name="q9" value="C"> Không, nhưng da bị bóng dầu<br>
-            <input type="radio" name="q9" value="D"> Một số vùng bị sạm, một số vùng không<br>
-        </div>
+                <div class="question" id="q9">
+                    <p><strong>9. Da bạn có bị sạm màu hoặc không đều màu không?</strong></p>
+                    <input type="radio" name="q9" value="A"> Không, da đều màu<br>
+                    <input type="radio" name="q9" value="B"> Có, da dễ bị xỉn màu<br>
+                    <input type="radio" name="q9" value="C"> Không, nhưng da bị bóng dầu<br>
+                    <input type="radio" name="q9" value="D"> Một số vùng bị sạm, một số vùng không<br>
+                </div>
 
-        <div class="question" id="q10">
-            <p>10. Bạn có thường xuyên thấy da bị nhạy cảm khi tiếp xúc với ánh nắng mặt trời không?</p>
-            <input type="radio" name="q10" value="A"> Không, da chịu được ánh nắng tốt<br>
-            <input type="radio" name="q10" value="B"> Có, da rất nhạy cảm với ánh nắng<br>
-            <input type="radio" name="q10" value="C"> Không, nhưng da dễ đổ dầu khi ra nắng<br>
-            <input type="radio" name="q10" value="D"> Một số vùng nhạy cảm hơn vùng khác<br>
-        </div>
+                <div class="question" id="q10">
+                    <p><strong>10. Bạn có thường xuyên thấy da bị nhạy cảm khi tiếp xúc với ánh nắng mặt trời không?</strong></p>
+                    <input type="radio" name="q10" value="A"> Không, da chịu được ánh nắng tốt<br>
+                    <input type="radio" name="q10" value="B"> Có, da rất nhạy cảm với ánh nắng<br>
+                    <input type="radio" name="q10" value="C"> Không, nhưng da dễ đổ dầu khi ra nắng<br>
+                    <input type="radio" name="q10" value="D"> Một số vùng nhạy cảm hơn vùng khác<br>
+                </div>
 
-        <button type="button" onclick="calculateResult()">Xem kết quả</button>
-    </form>
+                <button type="button" class="button-custom" onclick="calculateResult()">Xem kết quả</button>
+                <p class="result" id="result"></p>
+            </div>
 
-    <p class="result" id="result"></p>
+        </form>
+        <script>
+            function calculateResult() {
+                let scores = { A: 0, B: 0, C: 0, D: 0 };
+                let questions = document.querySelectorAll('.question');
+                let unanswered = false; // Biến kiểm tra có câu nào bị bỏ trống không
 
-    <script>
-        function calculateResult() {
-            let scores = { A: 0, B: 0, C: 0, D: 0 };
-            let questions = document.querySelectorAll('.question');
+                questions.forEach(q => {
+                    let selected = q.querySelector('input[type="radio"]:checked');
+                    if (selected) {
+                        scores[selected.value]++;
+                    } else {
+                        unanswered = true; // Nếu có câu chưa chọn, đặt cờ thành true
+                    }
+                });
 
-            questions.forEach(q => {
-                let selected = q.querySelector('input[type="radio"]:checked');
-                if (selected) {
-                    scores[selected.value]++;
+                if (unanswered) {
+                    alert("Vui lòng trả lời tất cả các câu hỏi trước khi xem kết quả!");
+                    return; // Dừng function nếu có câu bị bỏ trống
                 }
-            });
 
-            let maxScore = Math.max(scores.A, scores.B, scores.C, scores.D);
-            let resultText = "";
-            if (scores.A === maxScore) resultText = "Bạn có làn da thường.";
-            else if (scores.B === maxScore) resultText = "Bạn có làn da khô.";
-            else if (scores.C === maxScore) resultText = "Bạn có làn da dầu.";
-            else if (scores.D === maxScore) resultText = "Bạn có làn da hỗn hợp.";
+                let maxScore = Math.max(scores.A, scores.B, scores.C, scores.D);
+                let resultText = "";
+                if (scores.A === maxScore) resultText = "Bạn có làn da thường.";
+                else if (scores.B === maxScore) resultText = "Bạn có làn da khô. ";
+                else if (scores.C === maxScore) resultText = "Bạn có làn da dầu.";
+                else if (scores.D === maxScore) resultText = "Bạn có làn da hỗn hợp.";
 
-            document.getElementById("result").innerText = resultText;
-        }
-    </script>
-</th:block>
+                let resultElement = document.getElementById("result");
+                resultElement.innerText = resultText;
+                // resultElement.style.opacity = "1";
+                resultElement.style.transform = "translateY(0)";
+                // }
+            }
+        </script>
+    </th:block>
+</div>
+
 </body>
 </html>

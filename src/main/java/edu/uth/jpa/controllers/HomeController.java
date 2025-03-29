@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomeController {
+public class  HomeController {
     @GetMapping("/")
     public String HomePage() { return "master/home_page"; } //goi den trang htmlpage
     @GetMapping("master/about")
@@ -38,6 +38,11 @@ public class HomeController {
     @GetMapping("master/quiz")
     public String quizPage() {
         return "master/quiz";
+    }
+
+    @GetMapping("/auths/login")
+    public String loginPage() {
+        return "master/login";
     }
 
 
