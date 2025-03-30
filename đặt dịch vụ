@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Dịch Vụ Chăm Sóc Da</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Đặt Dịch Vụ Chăm Sóc Da</h2>
+        <form id="bookingForm">
+            <label for="customerName">Tên Khách Hàng:</label>
+            <input type="text" id="customerName" required>
+
+            <label for="service">Chọn Dịch Vụ:</label>
+            <select id="service">
+                <option value="facial">Chăm sóc da mặt</option>
+                <option value="acne">Trị liệu mụn</option>
+                <option value="anti-aging">Chống lão hóa</option>
+            </select>
+
+            <label for="specialist">Chọn Chuyên Viên (Không bắt buộc):</label>
+            <select id="specialist">
+                <option value="none">Không chỉ định</option>
+                <option value="expert1">Chuyên Viên A</option>
+                <option value="expert2">Chuyên Viên B</option>
+                <option value="expert3">Chuyên Viên C</option>
+            </select>
+
+            <label for="date">Chọn Ngày:</label>
+            <input type="date" id="date" required>
+
+            <button type="submit">Đặt Dịch Vụ</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let customerName = document.getElementById('customerName').value;
+            let service = document.getElementById('service').value;
+            let specialist = document.getElementById('specialist').value;
+            let date = document.getElementById('date').value;
+            
+            alert(`Khách hàng: ${customerName}\nDịch vụ: ${service}\nChuyên viên: ${specialist === 'none' ? 'Không chỉ định' : specialist}\nNgày: ${date}`);
+        });
+    </script>
+</body>
+</html>
