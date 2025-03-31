@@ -1,0 +1,135 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f3f6;
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #2d3436;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar .logo h2 {
+    font-size: 24px;
+    margin: 0;
+    color: #fff;
+}
+
+.sidebar .nav-links {
+    list-style: none;
+    padding: 0;
+    margin-top: 30px;
+}
+
+.sidebar .nav-links li {
+    margin-bottom: 15px;
+}
+
+.sidebar .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar .nav-links li a:hover {
+    color: #00bcd4;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    margin: 0;
+    color: #333;
+}
+
+header .header-right {
+    font-size: 16px;
+    color: #555;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background-color: #fff;
+    padding: 20px;
+    width: 23%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.stat-box h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+.stat-box p {
+    font-size: 24px;
+    color: #00bcd4;
+}
+
+.stat-box .increase {
+    color: green;
+    font-size: 14px;
+}
+
+.stat-box .decrease {
+    color: red;
+    font-size: 14px;
+}
+
+.page {
+    display: none;
+    /* Hide all pages by default */
+}
+
+#dashboard {
+    display: block;
+    /* Show dashboard page by default */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

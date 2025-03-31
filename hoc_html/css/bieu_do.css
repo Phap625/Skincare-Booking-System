@@ -1,0 +1,55 @@
+ /* Basic styling for the chart */
+ .chart-container {
+    width: 80%;
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.bar {
+    width: 50px;
+    background: linear-gradient(to top, rgba(75, 192, 192, 0.7), rgba(75, 192, 192, 1));
+    border-radius: 5px;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.bar:hover {
+    background-color: rgba(75, 192, 192, 1);
+}
+
+/* Value displayed on top of each bar */
+.bar-value {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: black;
+    position: absolute;
+    top: -20px;
+}
+
+/* Labels for each bar (e.g., months) */
+.label {
+    position: absolute;
+    bottom: -25px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Tooltip styling */
+.tooltip {
+    position: absolute;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    pointer-events: none;
+}
