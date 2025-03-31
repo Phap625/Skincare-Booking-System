@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head::head}"></div>
+
+<body>
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar::top_bar}"></div>
+    <div th:replace="~{master/navmenu::nav_menu}"></div>
+</header>
+
+<main class="container my-5">
+    <div class="row justify-content-center align-items-start g-5">
+        <div class="col-md-5 text-center">
+            <img th:src="@{/assets/img/doctors/doctor-linh.jpg}" alt="Bác sĩ Trương Linh" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-7">
+            <h2 class="text-primary fw-bold">Bác sĩ Trương Linh</h2>
+            <ul class="mt-4 fs-5">
+                <li>Tốt nghiệp Bác sĩ Y Khoa</li>
+                <li>Chứng chỉ chuyên sâu Khoa Da liễu</li>
+                <li>Chứng chỉ Laser và Ánh sáng trong Da liễu</li>
+                <li>Chứng chỉ điều trị nâng cao các bệnh lý về da</li>
+                <li>28 năm kinh nghiệm tại Trung tâm Da liễu Thừa Thiên Huế</li>
+                <li>6 năm Phó Giám đốc chuyên môn tại BV Da Liễu Thừa Thiên Huế</li>
+                <li>Nơi công tác: PHÒNG KHÁM CHUYÊN KHOA DA LIỄU HUẾ</li>
+            </ul>
+            <a th:href="@{/master/therapist}" class="btn btn-outline-primary mt-4">← Quay lại danh sách bác sĩ</a>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{master/footer::footer}"></div>
+</body>
+</html>
