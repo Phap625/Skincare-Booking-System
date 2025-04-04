@@ -3,131 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản Lý Nhân Viên</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Skincare Booking Manager</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        .employee-list {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        .employee-list th, .employee-list td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        .employee-list th {
-            background-color: #007BFF;
-            color: white;
-        }
-        .actions button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 0 5px;
-        }
-        .add-employee {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .add-employee input {
-            padding: 5px;
-            width: 40%;
-        }
-        .add-employee button {
-            padding: 5px 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; color: #4CAF50; }
+        .section { margin-bottom: 20px; padding: 15px; border: 2px solid #4CAF50; border-radius: 8px; background-color: #e8f5e9; }
+        .section h2 { background-color: #4CAF50; color: #fff; padding: 10px; border-radius: 8px; margin-top: 0; }
+        ul { list-style: none; padding: 0; }
+        li { background-color: #fff; margin: 5px 0; padding: 10px; border: 1px solid #4CAF50; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
+        li:hover { background-color: #c8e6c9; }
+        .btn { display: inline-block; background-color: #4CAF50; color: #fff; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; text-align: center; margin-top: 10px; }
+        .btn:hover { background-color: #45a049; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4); padding-top: 60px; }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 80%; border-radius: 8px; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Quản Lý Nhân Viên</h2>
-        <div class="add-employee">
-            <input type="text" id="employeeName" placeholder="Nhập tên nhân viên">
-            <input type="text" id="workHours" placeholder="Nhập thời gian làm việc (giờ)">
-            <button onclick="addEmployee()">Thêm</button>
+        <h1>Skincare Booking Manager</h1>
+        <div class="section" id="employeeSection">
+            <h2>Quản lý Nhân viên</h2>
+            <ul id="employeeList">
+                <li data-shifts="Ca sáng">Nhân viên 1 - Ca sáng</li>
+                <li data-shifts="Ca chiều">Nhân viên 2 - Ca chiều</li>
+            </ul>
+            <button class="btn" id="addEmployee">Thêm Nhân Viên</button>
         </div>
-        <table class="employee-list">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên Nhân Viên</th>
-                    <th>Thời Gian Làm Việc</th>
-                    <th>công việc</th>
-                </tr>
-            </thead>
-            <tbody id="employeeTableBody">
-                <!-- Danh sách nhân viên sẽ được thêm vào đây -->
-            </tbody>
-        </table>
+        <div id="employeeModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeEmployeeModal">&times;</span>
+                <h2>Thêm Nhân viên</h2>
+                <input type="text" id="employeeName" placeholder="Tên nhân viên">
+                <select id="employeeShifts">
+                    <option value="Ca sáng">Ca sáng</option>
+                    <option value="Ca chiều">Ca chiều</option>
+                    <option value="Ca tối">Ca tối</option>
+                </select>
+                <button class="btn" id="saveEmployee">Lưu</button>
+            </div>
+        </div>
     </div>
+
     <script>
-        let employeeId = 1;
-        function addEmployee() {
-            let name = document.getElementById('employeeName').value;
-            let workHours = document.getElementById('workHours').value;
-            if (name.trim() === '' || workHours.trim() === '') {
-                alert('Vui lòng nhập đầy đủ thông tin nhân viên!');
-                return;
+        const employeeSection = document.getElementById('employeeSection');
+        const employeeList = document.getElementById('employeeList');
+        const addEmployeeBtn = document.getElementById('addEmployee');
+        const employeeModal = document.getElementById('employeeModal');
+        const closeEmployeeModal = document.getElementById('closeEmployeeModal');
+        const saveEmployeeBtn = document.getElementById('saveEmployee');
+        const employeeNameInput = document.getElementById('employeeName');
+        const employeeShiftsSelect = document.getElementById('employeeShifts');
+
+        addEmployeeBtn.addEventListener('click', () => {
+            employeeModal.style.display = "block";
+        });
+
+        closeEmployeeModal.addEventListener('click', () => {
+            employeeModal.style.display = "none";
+        });
+
+        saveEmployeeBtn.addEventListener('click', () => {
+            const employeeName = employeeNameInput.value;
+            const employeeShifts = employeeShiftsSelect.value;
+            if (employeeName && employeeShifts) {
+                const newEmployee = document.createElement('li');
+                newEmployee.textContent = `${employeeName} - ${employeeShifts}`;
+                newEmployee.dataset.shifts = employeeShifts; // Lưu ca làm vào thuộc tính data-shifts
+                employeeList.appendChild(newEmployee);
+                employeeNameInput.value = '';
+                employeeShiftsSelect.value = 'Ca sáng'; // Đặt lại giá trị mặc định cho select
+                employeeModal.style.display = "none";
             }
-            let tableBody = document.getElementById('employeeTableBody');
-            let row = tableBody.insertRow();
-            row.innerHTML = `
-                <td>${employeeId}</td>
-                <td>${name}</td>
-                <td>${workHours} giờ</td>
-                <td class="actions">
-                    <button onclick="editEmployee(this)"><i class="fa fa-edit"></i></button>
-                    <button onclick="deleteEmployee(this)"><i class="fa fa-trash"></i></button>
-                </td>
-            `;
-            employeeId++;
-            document.getElementById('employeeName').value = '';
-            document.getElementById('workHours').value = '';
-        }
-        function editEmployee(btn) {
-            let row = btn.parentElement.parentElement;
-            let nameCell = row.cells[1];
-            let workHoursCell = row.cells[2];
-            let newName = prompt('Chỉnh sửa tên nhân viên:', nameCell.innerText);
-            let newWorkHours = prompt('Chỉnh sửa thời gian làm việc:', workHoursCell.innerText.replace(' giờ', ''));
-            if (newName && newName.trim() !== '') {
-                nameCell.innerText = newName;
-            }
-            if (newWorkHours && newWorkHours.trim() !== '') {
-                workHoursCell.innerText = newWorkHours + ' giờ';
-            }
-        }
-        function deleteEmployee(btn) {
-            if (confirm('Bạn có chắc chắn muốn xóa nhân viên này?')) {
-                let row = btn.parentElement.parentElement;
-                row.remove();
-            }
-        }
+        });
     </script>
 </body>
 </html>
