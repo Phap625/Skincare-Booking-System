@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Booking Manager</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        h1 { text-align: center; color: #4CAF50; }
+        .section { margin-bottom: 20px; padding: 15px; border: 2px solid #4CAF50; border-radius: 8px; background-color: #e8f5e9; }
+        .section h2 { background-color: #4CAF50; color: #fff; padding: 10px; border-radius: 8px; margin-top: 0; }
+        ul { list-style: none; padding: 0; }
+        li { background-color: #fff; margin: 5px 0; padding: 10px; border: 1px solid #4CAF50; border-radius: 6px; cursor: pointer; transition: background 0.3s; }
+        li:hover { background-color: #c8e6c9; }
+        .btn { display: inline-block; background-color: #4CAF50; color: #fff; padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; text-align: center; margin-top: 10px; }
+        .btn:hover { background-color: #45a049; }
+        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4); padding-top: 60px; }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 20px; border: 1px solid #888; width: 80%; border-radius: 8px; }
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+        .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skincare Booking Manager</h1>
+        <div class="section" id="serviceSection">
+            <h2>Quản lý Dịch vụ</h2>
+            <ul id="serviceList">
+                <li data-price="100000">Dịch vụ 1 - 100.000 VND</li>
+                <li data-price="150000">Dịch vụ 2 - 150.000 VND</li>
+                <li data-price="200000">Dịch vụ 3 - 200.000 VND</li>
+            </ul>
+            <button class="btn" id="addService">Thêm Dịch Vụ</button>
+        </div>
+        <div id="serviceModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeModal">&times;</span>
+                <h2>Thêm/Sửa Dịch vụ</h2>
+                <input type="text" id="serviceName" placeholder="Tên dịch vụ">
+                <input type="number" id="servicePrice" placeholder="Giá dịch vụ">
+                <button class="btn" id="saveService">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const serviceSection = document.getElementById('serviceSection');
+        const serviceList = document.getElementById('serviceList');
+        const addServiceBtn = document.getElementById('addService');
+        const serviceModal = document.getElementById('serviceModal');
+        const closeModal = document.getElementById('closeModal');
+        const saveServiceBtn = document.getElementById('saveService');
+        const serviceNameInput = document.getElementById('serviceName');
+        const servicePriceInput = document.getElementById('servicePrice');
+
+        addServiceBtn.addEventListener('click', () => {
+            serviceModal.style.display = "block";
+        });
+
+        closeModal.addEventListener('click', () => {
+            serviceModal.style.display = "none";
+        });
+
+        saveServiceBtn.addEventListener('click', () => {
+            const serviceName = serviceNameInput.value;
+            const servicePrice = servicePriceInput.value;
+            if (serviceName && servicePrice) {
+                const newService = document.createElement('li');
+                newService.textContent = `${serviceName} - ${servicePrice} VND`;
+                newService.dataset.price = servicePrice; // Lưu giá vào thuộc tính data-price
+                serviceList.appendChild(newService);
+                serviceNameInput.value = '';
+                servicePriceInput.value = '';
+                serviceModal.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
