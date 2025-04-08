@@ -19,4 +19,7 @@ public class Appointment {
     private String department;
     private String doctor;
     private String message;
+
+    public void setService(String service) {
+    }
 }

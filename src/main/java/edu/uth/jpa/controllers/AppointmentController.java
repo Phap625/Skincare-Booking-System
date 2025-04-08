@@ -11,16 +11,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/master/appointment") // ✅ Đặt prefix rõ ràng và nhất quán
+@RequestMapping("/master/appointment")
 public class AppointmentController {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
 
-    // 🟢 Hiển thị form đặt dịch vụ (mới hoặc chỉnh sửa)
+    // 🟢 Hiển thị form đặt dịch vụ (có thể kèm theo tên dịch vụ từ URL)
     @GetMapping
-    public String showAppointmentForm(Model model) {
-        model.addAttribute("appointment", new Appointment());
+    public String showAppointmentForm(@RequestParam(value = "service", required = false) String service, Model model) {
+        Appointment appointment = new Appointment();
+        appointment.setService(service); // Gán tên dịch vụ nếu có
+        model.addAttribute("appointment", appointment);
         return "master/appointment";
     }
 
@@ -28,7 +30,7 @@ public class AppointmentController {
     @PostMapping("/save")
     public String saveAppointment(@ModelAttribute Appointment appointment) {
         appointmentRepository.save(appointment);
-        return "redirect:/master/appointment/list"; // chuyển về danh sách sau khi lưu
+        return "redirect:/master/appointment/list";
     }
 
     // 🟢 Hiển thị danh sách các lịch hẹn
