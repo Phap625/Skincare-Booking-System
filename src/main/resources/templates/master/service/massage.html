@@ -7,6 +7,7 @@
     <div th:replace="~{master/topbar :: top_bar}"></div>
     <div th:replace="~{master/navmenu :: nav_menu}"></div>
 </header>
+
 <main class="container my-5">
     <div class="row g-5 align-items-center">
         <div class="col-md-6 text-center">
@@ -15,7 +16,11 @@
         <div class="col-md-6">
             <h2 class="text-primary fw-bold">Massage thư giãn</h2>
             <p class="fs-5">Dịch vụ giúp cơ thể thư giãn, giảm căng thẳng, hồi phục năng lượng với liệu pháp massage chuyên sâu từ các chuyên viên có kinh nghiệm.</p>
-            <a th:href="@{/master/service}" class="btn btn-outline-primary mt-3">← Quay lại trang dịch vụ</a>
+
+            <div class="mt-4">
+                <a th:href="@{/master/service}" class="btn btn-outline-primary">← Quay lại trang dịch vụ</a>
+                <a th:href="@{/appointment(service='massage')}" class="btn btn-primary ms-2">Đặt lịch dịch vụ</a>
+            </div>
         </div>
     </div>
 </main>

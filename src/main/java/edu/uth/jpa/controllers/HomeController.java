@@ -19,7 +19,7 @@ public class  HomeController {
     public String contactPage() {
         return "master/contact";
     }
-    @GetMapping("master/appointment")
+    @GetMapping("/appointment")
     public String appointmentPage() {
         return "master/appointment";
     }

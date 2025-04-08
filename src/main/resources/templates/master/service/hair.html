@@ -7,6 +7,7 @@
     <div th:replace="~{master/topbar :: top_bar}"></div>
     <div th:replace="~{master/navmenu :: nav_menu}"></div>
 </header>
+
 <main class="container my-5">
     <div class="row g-5 align-items-center">
         <div class="col-md-6 text-center">
@@ -14,8 +15,14 @@
         </div>
         <div class="col-md-6">
             <h2 class="text-primary fw-bold">Gội đầu dưỡng sinh</h2>
-            <p class="fs-5">Kết hợp gội đầu thư giãn cùng massage da đầu giúp giảm stress, kích thích lưu thông máu, làm sạch gàu và thư giãn tinh thần.</p>
-            <a th:href="@{/master/service}" class="btn btn-outline-primary mt-3">← Quay lại trang dịch vụ</a>
+            <p class="fs-5">
+                Kết hợp gội đầu thư giãn cùng massage da đầu giúp giảm stress, kích thích lưu thông máu, làm sạch gàu và thư giãn tinh thần.
+            </p>
+
+            <div class="mt-4">
+                <a th:href="@{/master/service}" class="btn btn-outline-primary">← Quay lại trang dịch vụ</a>
+                <a th:href="@{/appointment(service='hair')}" class="btn btn-primary ms-2">Đặt lịch dịch vụ</a>
+            </div>
         </div>
     </div>
 </main>

@@ -7,6 +7,7 @@
     <div th:replace="~{master/topbar :: top_bar}"></div>
     <div th:replace="~{master/navmenu :: nav_menu}"></div>
 </header>
+
 <main class="container my-5">
     <div class="row g-5 align-items-center">
         <div class="col-md-6 text-center">
@@ -14,8 +15,15 @@
         </div>
         <div class="col-md-6">
             <h2 class="text-primary fw-bold">Trị liệu cơ thể</h2>
-            <p class="fs-5">Tẩy tế bào chết, body wrap, dưỡng ẩm toàn thân giúp làm mịn và đều màu da, giảm căng thẳng và độc tố.</p>
-            <a th:href="@{/master/service}" class="btn btn-outline-primary mt-3">← Quay lại trang dịch vụ</a>
+            <p class="fs-5">
+                Tẩy tế bào chết, body wrap, dưỡng ẩm toàn thân giúp làm mịn và đều màu da, giảm căng thẳng và độc tố.
+            </p>
+
+            <!-- Các nút điều hướng -->
+            <div class="mt-4">
+                <a th:href="@{/master/service}" class="btn btn-outline-primary">← Quay lại trang dịch vụ</a>
+                <a th:href="@{/appointment(service='body')}" class="btn btn-primary ms-2">Đặt lịch dịch vụ</a>
+            </div>
         </div>
     </div>
 </main>
