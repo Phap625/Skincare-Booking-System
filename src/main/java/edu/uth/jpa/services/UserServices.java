@@ -1,6 +1,7 @@
 package edu.uth.jpa.services;
 import java.util.Collections;
 
+import edu.uth.jpa.models.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -52,10 +53,38 @@ public class UserServices implements UserDetailsService  {
         return true;
     }
     public User createUser(User user) {
+        if (userRepository.existsByUsername(user.getUsername())) {
+            throw new RuntimeException("User already exists!");
+        }
+
+        user.setUsername(user.getUsername());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(user.getRole());
+        user.setEmail(user.getEmail());
         return userRepository.save(user);
     }
     public List<User> findAll() {
         return userRepository.findAll();
     }
     //trien khai cac methods save.delete
+    public User updateUser(User user ) {
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        if (userOptional.isEmpty()) {
+            throw new RuntimeException("User not found!");
+        }
+        User existingUser = userOptional.get();
+        existingUser.setUsername(user.getUsername());
+        existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        existingUser.setRole(user.getRole());
+        existingUser.setEmail(user.getEmail());
+        return userRepository.save(existingUser);
+    }
+    public boolean deleteUser(Long id) {
+        Optional<User> userOptional =userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            userRepository.delete(userOptional.get());
+            return true;
+        }
+        return false;
+    }
 }

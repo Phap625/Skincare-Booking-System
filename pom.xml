@@ -87,6 +87,11 @@
             <artifactId>jjwt</artifactId>
             <version>0.12.3</version> <!-- Kiểm tra phiên bản mới nhất trên Maven Central -->
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>8.0.1.Final</version> <!-- Hoặc phiên bản mới nhất -->
+        </dependency>
     </dependencies>
 
     <build>

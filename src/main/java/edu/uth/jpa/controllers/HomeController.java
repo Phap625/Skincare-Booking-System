@@ -45,6 +45,11 @@ public class  HomeController {
         return "master/login";
     }
 
+    @GetMapping("/user/profile")
+    public String profilePage() {
+        return "master/profile";
+    }
+
 
 
 }

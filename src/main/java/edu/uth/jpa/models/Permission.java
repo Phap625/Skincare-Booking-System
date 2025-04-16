@@ -1,8 +1,12 @@
 package edu.uth.jpa.models;
 import java.util.*;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "permission", schema = "jpa")
 public class Permission {
     @Id

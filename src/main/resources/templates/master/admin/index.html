@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Quản lý User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        .form-container {
+            margin-top: 20px;
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ccc;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>📋 Quản lý người dùng</h1>
+
+<button onclick="showAddUserForm()">➕ Thêm User Mới</button>
+
+<div class="form-container" id="formContainer">
+    <h3>➕ Thêm / Cập nhật User</h3>
+    <input type="hidden" id="userId">
+    <input type="text" id="username" placeholder="Tên người dùng"><br>
+    <input type="text" id="phone" name="phone" placeholder="Số điện thoại"><br>
+    <input type="text" id="role" placeholder="Vai trò"><br>
+    <input type="date" id="dob" placeholder="Ngày sinh"><br>
+    <button onclick="createOrUpdateUser()">Lưu</button>
+    <button onclick="cancelEdit()">Hủy</button>
+</div>
+
+<h3>📄 Danh sách Users</h3>
+<table id="userTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Phone</th>
+        <th>Birthday</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<script>
+    //API CRUD danh cho ADMIN
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    console.log(role);
+    console.log(token);
+
+    const API_URL = 'http://localhost:8080/admin';
+    window.onload = function () {
+        if (!token) {
+            alert("Token không tồn tại. Vui lòng đăng nhập lại.");
+            window.location.href="/auths/login";
+            return;
+        }
+        if(role!=="ROLE_ADMIN") {
+            alert("Bạn không có quyền truy cập trang này! Chỉ admin mới được phép.");
+            window.location.href = "/"; // Chuyển hướng về trang chính hoặc trang khác
+            return;
+        }
+        loadUsers();
+    }
+
+
+    function loadUsers() {
+        fetch(API_URL, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`Lỗi khi gọi API: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                const tableBody = document.querySelector("#userTable tbody");
+                tableBody.innerHTML = '';
+                data.forEach(user => {
+                    tableBody.innerHTML += `
+                        <tr>
+                            <td>${user.id}</td>
+                            <td>${user.username}</td>
+                            <td>${user.email}</td>
+                            <td>${user.role}</td>
+                            <td>${user.phone || ''}</td>
+                            <td>${user.dob || ''}</td>
+                            <td>
+                                <button onclick="editUser(${user.id}, '${user.username}', '${user.phone || ''}', '${user.role}', '${user.dob || ''}')">Sửa</button>
+                                <button onclick="deleteUser(${user.id})">Xoá</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            })
+            .catch(error => {
+                console.error("Lỗi khi tải danh sách users:", error);
+                alert("Không thể tải danh sách users: " + error.message);
+            });
+    }
+
+    function showAddUserForm() {
+        document.getElementById("formContainer").style.display = 'block';
+        document.getElementById("userId").value = '';
+        document.getElementById("username").value = '';
+        document.getElementById("phone").value = '';
+        document.getElementById("role").value = '';
+        document.getElementById("dob").value = '';
+    }
+
+    function cancelEdit() {
+        document.getElementById("formContainer").style.display = 'none';
+        document.getElementById("userId").value = '';
+        document.getElementById("username").value = '';
+        document.getElementById("phone").value = '';
+        document.getElementById("role").value = '';
+        document.getElementById("dob").value = '';
+    }
+
+    function createOrUpdateUser() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Token không tồn tại. Vui lòng đăng nhập lại.");
+            window.location.href="/auths/login";
+            return;
+        }
+
+        const id = document.getElementById("userId").value;
+        const username = document.getElementById("username").value;
+        const phone = document.getElementById("phone").value;
+        const role = document.getElementById("role").value;
+        const dob = document.getElementById("dob").value;
+
+        const method = id ? 'PUT' : 'POST';
+        const url = id ? `${API_URL}/${id}` : API_URL;
+
+        fetch(url, {
+            method: method,
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ id, username, phone, role, dob })
+        })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`Lỗi khi lưu user: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(() => {
+                loadUsers();
+                document.getElementById("formContainer").style.display = 'none';
+                document.getElementById("userId").value = '';
+                document.getElementById("username").value = '';
+                document.getElementById("phone").value = '';
+                document.getElementById("role").value = '';
+                document.getElementById("dob").value = '';
+            })
+            .catch(error => {
+                console.error("Lỗi khi lưu user:", error);
+                alert("Không thể lưu user: " + error.message);
+            });
+    }
+
+    function editUser(id, username, phone, role, dob) {
+        document.getElementById("formContainer").style.display = 'block';
+        document.getElementById("userId").value = id;
+        document.getElementById("username").value = username;
+        document.getElementById("phone").value = phone || '';
+        document.getElementById("role").value = role;
+        document.getElementById("dob").value = dob || '';
+    }
+
+    function deleteUser(id) {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Token không tồn tại. Vui lòng đăng nhập lại.");
+            window.location.href="/auths/login";
+            return;
+        }
+
+        if (confirm("Bạn có chắc muốn xoá user này?")) {
+            fetch(`${API_URL}/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`Lỗi khi xóa user: ${res.status}`);
+                    }
+                    loadUsers();
+                })
+                .catch(error => {
+                    console.error("Lỗi khi xóa user:", error);
+                    alert("Không thể xóa user: " + error.message);
+                });
+        }
+    }
+</script>
+
+</body>
+</html>

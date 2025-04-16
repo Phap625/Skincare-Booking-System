@@ -1,8 +1,12 @@
 package edu.uth.jpa.models;
+import edu.uth.jpa.enums.userRole;
 import jakarta.persistence.*;
+
+import java.time.LocalDate;
 import java.util.*;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.*;
+
 
 @Entity
 @Getter
@@ -16,56 +20,21 @@ public class User {
     private String username;
     private String password;
     private String email;
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
+    private String phone;
+    private LocalDate dob;
     private String role;
-    //getter setter
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public User(String username, String password,String role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
     public User() {}
+
+    public User(String username, String password, String email, String role,LocalDate dob) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.dob = dob;
+    }
+
+
     @ManyToMany
     @JoinTable(
             name = "user_permission",
@@ -73,6 +42,5 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "permission_id") // Khóa ngoại của Permission
     )
     private Set<Permission> permissions=new HashSet<>();
-    public Set<Permission> getPermissions() {return this.permissions;}
-    public void setPermissions(Set<Permission> permissions) { this.permissions = permissions; }
+
 }
