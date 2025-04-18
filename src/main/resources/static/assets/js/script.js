@@ -10,8 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const username = localStorage.getItem("username")?.trim();
 
 
-  // console.log("Token:", token);
-  // console.log("Username:", username);
+  console.log("Token:", token);
+  console.log("Username:", username);
   function isTokenExpired(token) {
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));

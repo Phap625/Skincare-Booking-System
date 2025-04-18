@@ -74,11 +74,13 @@
 </table>
 
 <script>
-    //API CRUD danh cho ADMIN
     const token = localStorage.getItem("token");
     const role = localStorage.getItem("role");
     console.log(role);
     console.log(token);
+
+    //API CRUD danh cho ADMIN
+
 
     const API_URL = 'http://localhost:8080/admin';
     window.onload = function () {
@@ -97,10 +99,11 @@
 
 
     function loadUsers() {
+        const token = localStorage.getItem("token");
         fetch(API_URL, {
             method: "GET",
             headers: {
-                "Authorization": `Bearer ${token}`,
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
             }
         })
@@ -174,7 +177,7 @@
         fetch(url, {
             method: method,
             headers: {
-                "Authorization": `Bearer ${token}`,
+                "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ id, username, phone, role, dob })
@@ -221,7 +224,7 @@
             fetch(`${API_URL}/${id}`, {
                 method: 'DELETE',
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": "Bearer " + token,
                 }
             })
                 .then(res => {

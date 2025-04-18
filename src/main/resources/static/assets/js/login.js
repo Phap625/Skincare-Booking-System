@@ -35,12 +35,29 @@
                     localStorage.setItem("username", username);
                     localStorage.setItem("role",data.role);
                     const role=localStorage.getItem("role");
-                    // const token = localStorage.getItem("token");
+                    const token = localStorage.getItem("token");
 
                     if (role === "ROLE_ADMIN"){
                         alert("Đăng nhập thành công! Chuyển đến trang admin.");
-                            window.location.href = "/admin/list-user";
-
+                        // const adminResponse = await fetch("http://localhost:8080/admin/list-user", {
+                        //     method: "GET",
+                        //     headers: {
+                        //         "Authorization": "Bearer " + token
+                        //     }
+                        // });
+                        //
+                        // if (adminResponse.ok) {
+                        //     const htmlContent = await adminResponse.text();
+                        //     // Hiển thị nội dung HTML từ /admin/list-user
+                        //     document.open();
+                        //     document.write(htmlContent);
+                        //     document.close();
+                        //     history.pushState(null, "", "/admin/list-user");
+                        // } else {
+                        //     alert("Không có quyền truy cập trang admin!");
+                        //     window.location.href = "/";
+                        // }
+                            window.location.href = "/list-user";
                     } else {
                         alert("Đăng nhập thành công! Chuyển đến trang người dùng.");
                         window.location.href = "/";

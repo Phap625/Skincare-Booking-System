@@ -50,6 +50,11 @@ public class  HomeController {
         return "master/profile";
     }
 
+    @GetMapping("/list-user")
+    public String adminPage() {
+        return "master/admin/index";
+    }
+
 
 
 }

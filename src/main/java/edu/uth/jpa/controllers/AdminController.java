@@ -16,10 +16,7 @@ public class AdminController {
     @Autowired
     private UserServices userService;
 
-    @GetMapping("/list-user")
-    public String adminPage() {
-        return "master/admin/index";
-    }
+
 
     // Tạo mới user
     @PostMapping
@@ -31,6 +28,7 @@ public class AdminController {
     // Lấy danh sách tất cả user
     @GetMapping
     public ResponseEntity<List<User>> getAllUsers() {
+
         List<User> users = userService.findAll();
         return ResponseEntity.ok(users);
     }
