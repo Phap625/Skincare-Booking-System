@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/admin/**").hasRole("ADMIN")// Chỉ ADMIN mới truy cập được
                         .requestMatchers("/auths/profile").authenticated()   // phải đăng nhập mới xem được profile
-                        .requestMatchers("/customer/**").hasAnyRole("CUSTOMER", "ADMIN") //
+                        .requestMatchers("/customer/**").permitAll() //
                         .requestMatchers("/auths/register", "/auths/login").permitAll()
                         .anyRequest().permitAll()                     // Các trang còn lại truy cập tự do
                 )

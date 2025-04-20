@@ -1,6 +1,7 @@
 package edu.uth.jpa.controllers.res;
 
 import edu.uth.jpa.models.CustomUserDetails;
+import edu.uth.jpa.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,6 +47,7 @@ public class AuthsController {
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.joining(",")); // nếu bạn có nhiều role, sẽ là "ROLE_ADMIN,ROLE_USER" v.v.
 
+
             String token = jwtUtil.generateToken(userDetails.getUsername(), role);
 
             // 👉 Tạo AuthResponse và set thêm role
@@ -75,6 +77,7 @@ public class AuthsController {
         return ResponseEntity.ok(Map.of(
                 "username",userDetails.getUsername(),
                 "role",userDetails.getAuthorities()
+
         ));
     }
 

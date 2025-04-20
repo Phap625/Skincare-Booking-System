@@ -49,6 +49,8 @@
     <h3>➕ Thêm / Cập nhật User</h3>
     <input type="hidden" id="userId">
     <input type="text" id="username" placeholder="Tên người dùng"><br>
+    <input type="password" id="password" placeholder="Password" /><br>
+    <input type="email" id="email" placeholder="Email" /><br>
     <input type="text" id="phone" name="phone" placeholder="Số điện thoại"><br>
     <input type="text" id="role" placeholder="Vai trò"><br>
     <input type="date" id="dob" placeholder="Ngày sinh"><br>
@@ -62,6 +64,7 @@
     <tr>
         <th>ID</th>
         <th>Username</th>
+        <th>Password</th>
         <th>Email</th>
         <th>Role</th>
         <th>Phone</th>
@@ -121,12 +124,13 @@
                         <tr>
                             <td>${user.id}</td>
                             <td>${user.username}</td>
+                            <td>${user.password}</td>
                             <td>${user.email}</td>
                             <td>${user.role}</td>
                             <td>${user.phone || ''}</td>
                             <td>${user.dob || ''}</td>
                             <td>
-                                <button onclick="editUser(${user.id}, '${user.username}', '${user.phone || ''}', '${user.role}', '${user.dob || ''}')">Sửa</button>
+                                <button onclick="editUser(${user.id}, '${user.username}','${user.password}','${user.email}' ,'${user.phone || ''}', '${user.role}', '${user.dob || ''}')">Sửa</button>
                                 <button onclick="deleteUser(${user.id})">Xoá</button>
                             </td>
                         </tr>
@@ -143,8 +147,10 @@
         document.getElementById("formContainer").style.display = 'block';
         document.getElementById("userId").value = '';
         document.getElementById("username").value = '';
-        document.getElementById("phone").value = '';
+        document.getElementById("password").value = '';
+        document.getElementById("email").value = '';
         document.getElementById("role").value = '';
+        document.getElementById("phone").value = '';
         document.getElementById("dob").value = '';
     }
 
@@ -152,13 +158,16 @@
         document.getElementById("formContainer").style.display = 'none';
         document.getElementById("userId").value = '';
         document.getElementById("username").value = '';
-        document.getElementById("phone").value = '';
+        document.getElementById("password").value = '';
+        document.getElementById("email").value = '';
         document.getElementById("role").value = '';
+        document.getElementById("phone").value = '';
         document.getElementById("dob").value = '';
     }
 
     function createOrUpdateUser() {
         const token = localStorage.getItem("token");
+        console.log("Token đang gửi:", token);
         if (!token) {
             alert("Token không tồn tại. Vui lòng đăng nhập lại.");
             window.location.href="/auths/login";
@@ -167,8 +176,10 @@
 
         const id = document.getElementById("userId").value;
         const username = document.getElementById("username").value;
-        const phone = document.getElementById("phone").value;
+        const password = document.getElementById("password").value;
+        const email = document.getElementById("email").value;
         const role = document.getElementById("role").value;
+        const phone = document.getElementById("phone").value;
         const dob = document.getElementById("dob").value;
 
         const method = id ? 'PUT' : 'POST';
@@ -179,8 +190,10 @@
             headers: {
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json"
+
             },
-            body: JSON.stringify({ id, username, phone, role, dob })
+
+            body: JSON.stringify({ id, username,password,email, phone, role, dob })
         })
             .then(res => {
                 if (!res.ok) {
@@ -193,8 +206,10 @@
                 document.getElementById("formContainer").style.display = 'none';
                 document.getElementById("userId").value = '';
                 document.getElementById("username").value = '';
-                document.getElementById("phone").value = '';
+                document.getElementById("password").value = '';
+                document.getElementById("email").value = '';
                 document.getElementById("role").value = '';
+                document.getElementById("phone").value = '';
                 document.getElementById("dob").value = '';
             })
             .catch(error => {
@@ -203,12 +218,14 @@
             });
     }
 
-    function editUser(id, username, phone, role, dob) {
+    function editUser(id, username,password,email, phone, role, dob) {
         document.getElementById("formContainer").style.display = 'block';
         document.getElementById("userId").value = id;
         document.getElementById("username").value = username;
-        document.getElementById("phone").value = phone || '';
+        document.getElementById("password").value = password;
+        document.getElementById("email").value = email;
         document.getElementById("role").value = role;
+        document.getElementById("phone").value = phone || '';
         document.getElementById("dob").value = dob || '';
     }
 

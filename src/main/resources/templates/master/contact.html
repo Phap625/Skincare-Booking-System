@@ -55,7 +55,7 @@
             </div>
 
             <div class="col-lg-6">
-                <form th:action="@{/assets/forms/contact.php}" method="post" class="php-email-form aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
+                <form id="contactForm" class="php-email-form aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
                     <div class="row gy-4">
 
                         <div class="col-md-6">
@@ -67,7 +67,15 @@
                         </div>
 
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                            <label for="subject" class="form-label"></label>
+                            <select class="form-control" name="subject" id="subject" required>
+                                <option value=""> Chọn mức đánh giá </option>
+                                <option value="1">⭐ - Rất tệ</option>
+                                <option value="2">⭐⭐ - Tệ</option>
+                                <option value="3">⭐⭐⭐ - Bình thường</option>
+                                <option value="4">⭐⭐⭐⭐ - Tốt</option>
+                                <option value="5">⭐⭐⭐⭐⭐ - Rất tốt</option>
+                            </select>
                         </div>
 
                         <div class="col-md-12">

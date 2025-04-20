@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head::head}"></div>
+
+<body>
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar :: top_bar}"></div>
+    <div th:replace="~{master/navmenu :: nav_menu}"></div>
+</header>
+
+<main class="container my-5">
+    <div class="row g-5 align-items-center">
+        <div class="col-md-6 text-center">
+            <img th:src="@{/assets/img/services/massage.png}" class="img-fluid rounded shadow" alt="Massage thư giãn">
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary fw-bold">Massage thư giãn</h2>
+            <p class="fs-5">Dịch vụ giúp cơ thể thư giãn, giảm căng thẳng, hồi phục năng lượng với liệu pháp massage chuyên sâu từ các chuyên viên có kinh nghiệm.</p>
+
+            <div class="mt-4">
+                <a th:href="@{/master/service}" class="btn btn-outline-primary">← Quay lại trang dịch vụ</a>
+                <a th:href="@{/master/appointment(service='massage')}" class="btn btn-primary ms-2">Đặt lịch dịch vụ</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{master/footer::footer}"></div>
+</body>
+</html>

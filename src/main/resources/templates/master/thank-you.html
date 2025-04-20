@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head :: head}"></div>
+
+<body>
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar :: top_bar}"></div>
+    <div th:replace="~{master/navmenu :: nav_menu}"></div>
+</header>
+
+<main class="container my-5">
+    <div class="text-center">
+        <h2 class="text-success fw-bold">Cảm ơn bạn đã gửi liên hệ!</h2>
+        <p class="fs-5">Chúng tôi sẽ phản hồi bạn sớm nhất có thể.</p>
+        <a href="/" class="btn btn-primary mt-3">Về trang chủ</a>
+    </div>
+</main>
+
+<div th:replace="~{master/footer :: footer}"></div>
+</body>
+</html>

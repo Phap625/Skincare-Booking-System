@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head::head}"></div>
+
+<body>
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar :: top_bar}"></div>
+    <div th:replace="~{master/navmenu :: nav_menu}"></div>
+</header>
+
+<main class="container my-5">
+    <div class="row g-5 align-items-center">
+        <div class="col-md-6 text-center">
+            <img th:src="@{/assets/img/services/body.png}" class="img-fluid rounded shadow" alt="Trị liệu cơ thể">
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-primary fw-bold">Trị liệu cơ thể</h2>
+            <p class="fs-5">
+                Tẩy tế bào chết, body wrap, dưỡng ẩm toàn thân giúp làm mịn và đều màu da, giảm căng thẳng và độc tố.
+            </p>
+
+            <!-- Các nút điều hướng -->
+            <div class="mt-4">
+                <a th:href="@{/master/service}" class="btn btn-outline-primary">← Quay lại trang dịch vụ</a>
+                <a th:href="@{/master/appointment(service='body')}" class="btn btn-primary ms-2">Đặt lịch dịch vụ</a>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{master/footer::footer}"></div>
+</body>
+</html>

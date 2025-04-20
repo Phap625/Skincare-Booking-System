@@ -19,10 +19,10 @@ public class  HomeController {
     public String contactPage() {
         return "master/contact";
     }
-    @GetMapping("master/appointment")
-    public String appointmentPage() {
-        return "master/appointment";
-    }
+//    @GetMapping("master/appointment")
+//    public String appointmentPage() {
+//        return "master/appointment";
+//    }
     @GetMapping("master/blog")
     public String blogPage() {
         return "master/blog";
