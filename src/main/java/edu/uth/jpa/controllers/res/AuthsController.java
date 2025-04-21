@@ -1,7 +1,5 @@
 package edu.uth.jpa.controllers.res;
 
-import edu.uth.jpa.models.CustomUserDetails;
-import edu.uth.jpa.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +11,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpServletRequest;
 import edu.uth.jpa.dtos.AuthResponse;
 import edu.uth.jpa.dtos.LoginRequest;
 import edu.uth.jpa.dtos.RegisterDTO;
 import edu.uth.jpa.jwt.JwtUtil;
 import edu.uth.jpa.services.UserServices;
 
-import javax.sql.RowSet;
 import java.util.Map;
 import java.util.stream.Collectors;
 

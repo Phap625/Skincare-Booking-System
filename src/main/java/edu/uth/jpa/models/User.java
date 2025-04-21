@@ -38,14 +38,6 @@ public class User implements UserDetails {
     }
 
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_permission",
-            joinColumns = @JoinColumn(name = "user_id"),  // Khóa ngoại của User
-            inverseJoinColumns = @JoinColumn(name = "permission_id") // Khóa ngoại của Permission
-    )
-    private Set<Permission> permissions=new HashSet<>();
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(this.role));

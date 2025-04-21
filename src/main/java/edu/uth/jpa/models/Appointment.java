@@ -26,9 +26,7 @@ public class Appointment  {
     private String doctor;
     private String message;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+
 
 
     public void setService(String service) {

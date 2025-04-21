@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<div th:replace="~{master/head::head}"></div>
+
+<body>
+<header id="header" class="header sticky-top">
+    <div th:replace="~{master/topbar::top_bar}"></div>
+    <div th:replace="~{master/navmenu::nav_menu}"></div>
+</header>
+
+<main class="container my-5">
+    <div class="row justify-content-center align-items-start g-5">
+        <div class="col-md-5 text-center">
+            <img th:src="@{/assets/img/doctors/doctors-3.jpg}" alt="Bác sĩ Mai Hữu Nghĩa" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-7">
+            <h2 class="text-primary fw-bold">Bác sĩ Mai Hữu Nghĩa</h2>
+            <ul class="mt-4 fs-5">
+                <li>Chứng chỉ hành nghề Da Liễu</li>
+                <li>Phẫu thuật tạo hình Thẩm mỹ</li>
+                <li>Tiêm chất làm đầy trong thẩm mỹ nội khoa</li>
+                <li>Phẫu thuật mũi Tái cấu trúc nâng cao</li>
+                <li>Chứng chỉ ứng dụng Laser và Ánh sáng</li>
+                <li>Chứng chỉ tiểu phẫu da</li>
+                <li>Nơi công tác: PHÒNG KHÁM CHUYÊN KHOA DA LIỄU GÒ VẤP</li>
+            </ul>
+            <a th:href="@{/master/therapist}" class="btn btn-outline-primary mt-4">← Quay lại danh sách bác sĩ</a>
+        </div>
+    </div>
+</main>
+
+<div th:replace="~{master/footer::footer}"></div>
+</body>
+</html>

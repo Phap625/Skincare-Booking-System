@@ -85,13 +85,16 @@
             <td th:text="${a.doctor}">Bác sĩ</td>
             <td th:text="${a.message}">Ghi chú</td>
             <td>
-                <a th:href="@{'/master/appointment/edit/' + ${a.id}}" class="btn btn-edit">Sửa</a>
+                <a th:href="@{'/customer/appointment/edit/' + ${a.id}}" class="btn btn-edit">Sửa</a>
             </td>
             <td>
-                <a th:href="@{'/master/appointment/delete/' + ${a.id}}" class="btn btn-delete"
+                <a th:href="@{'/customer/appointment/delete/' + ${a.id}}" class="btn btn-delete"
                    onclick="return confirm('Bạn có chắc muốn xóa không?');">Xóa</a>
             </td>
         </tr>
+        <div style="text-align: right; margin-bottom: 15px;">
+            <a th:href="@{/customer/appointment}" class="btn" style="background-color: #28a745;">← Quay về đặt lịch</a>
+        </div>
         </tbody>
     </table>
 </div>

@@ -2,11 +2,8 @@
 package edu.uth.jpa.controllers;
 
 import edu.uth.jpa.models.Appointment;
-import edu.uth.jpa.models.User;
 import edu.uth.jpa.repositories.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,49 +29,31 @@ public class AppointmentController {
 
     // 🟢 Lưu mới hoặc cập nhật lịch hẹn
     @PostMapping("/save")
-    public ResponseEntity<String> saveAppointment(@ModelAttribute Appointment appointment, @AuthenticationPrincipal User user) {
-        appointment.setUser(user);
+    public String saveAppointment(@ModelAttribute Appointment appointment) {
         appointmentRepository.save(appointment);
-        return ResponseEntity.ok("Đặt lịch thành công");
-
+        return "redirect:/customer/appointment/list";
     }
 
     // 🟢 Hiển thị danh sách các lịch hẹn
     @GetMapping("/list")
-    public String viewAppointments(@AuthenticationPrincipal User user, Model model) {
-        List<Appointment> list = appointmentRepository.findByUserId(user.getId());
+    public String viewAppointments(Model model) {
+        List<Appointment> list = appointmentRepository.findAll();
         model.addAttribute("appointments", list);
         return "master/appointment-list";
     }
 
     // 🟡 Sửa lịch hẹn
-    @PutMapping("/edit/{id}")
-    public String editAppointment(@PathVariable("id") Long id,
-                                  @AuthenticationPrincipal User user,
-                                  Model model) {
+    @GetMapping("/edit/{id}")
+    public String editAppointment(@PathVariable("id") Long id, Model model) {
         Optional<Appointment> appointmentOpt = appointmentRepository.findById(id);
-        if (appointmentOpt.isPresent()) {
-            Appointment appointment = appointmentOpt.get();
-            if (!appointment.getUser().getId().equals(user.getId())) {
-                return "error/403"; // hoặc redirect về trang báo lỗi
-            }
-            model.addAttribute("appointment", appointment);
-        } else {
-            return "redirect:/customer/appointment/list";
-        }
-        return "/master/appointment-edit";
+        model.addAttribute("appointment", appointmentOpt.orElse(new Appointment()));
+        return "/master/appointment";
     }
 
-
     // 🔴 Xóa lịch hẹn
-    @DeleteMapping("/delete/{id}")
-    public String deleteAppointment(@PathVariable("id") Long id,
-                                    @AuthenticationPrincipal User user) {
-        Optional<Appointment> appointmentOpt = appointmentRepository.findById(id);
-        if (appointmentOpt.isPresent() &&
-                appointmentOpt.get().getUser().getId().equals(user.getId())) {
-            appointmentRepository.deleteById(id);
-        }
+    @GetMapping("/delete/{id}")
+    public String deleteAppointment(@PathVariable("id") Long id) {
+        appointmentRepository.deleteById(id);
         return "redirect:/customer/appointment/list";
     }
 }

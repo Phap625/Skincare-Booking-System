@@ -199,7 +199,7 @@
                 if (!res.ok) {
                     throw new Error(`Lỗi khi lưu user: ${res.status}`);
                 }
-                return res.json();
+                return res.text();
             })
             .then(() => {
                 loadUsers();

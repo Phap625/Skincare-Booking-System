@@ -1,7 +1,6 @@
 package edu.uth.jpa.services;
 import java.util.Collections;
 
-import edu.uth.jpa.models.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -63,6 +62,8 @@ public class UserServices implements UserDetailsService  {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(user.getRole());
         user.setEmail(user.getEmail());
+        user.setPhone(user.getPhone());
+        user.setDob(user.getDob());
         return userRepository.save(user);
     }
     public List<User> findAll() {
@@ -79,6 +80,8 @@ public class UserServices implements UserDetailsService  {
         existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
         existingUser.setRole(user.getRole());
         existingUser.setEmail(user.getEmail());
+        existingUser.setPhone(user.getPhone());
+        existingUser.setDob(user.getDob());
         return userRepository.save(existingUser);
     }
     public boolean deleteUser(Long id) {

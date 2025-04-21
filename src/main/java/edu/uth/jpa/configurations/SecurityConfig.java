@@ -35,7 +35,7 @@ public class SecurityConfig {
                         .requestMatchers("/admin/**").hasRole("ADMIN")// Chỉ ADMIN mới truy cập được
                         .requestMatchers("/auths/profile").authenticated()   // phải đăng nhập mới xem được profile
                         .requestMatchers("/customer/**").permitAll() //
-                        .requestMatchers("/auths/register", "/auths/login").permitAll()
+//                        .requestMatchers("/auths/register", "/auths/login").permitAll()
                         .anyRequest().permitAll()                     // Các trang còn lại truy cập tự do
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) // Add JWT filter

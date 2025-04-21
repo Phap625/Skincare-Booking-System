@@ -26,4 +26,8 @@ public class Contact {
         this.subject = subject;
         this.message = message;
     }
+
+    public Contact() {
+
+    }
 }
