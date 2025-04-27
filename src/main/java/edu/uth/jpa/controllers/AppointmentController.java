@@ -1,4 +1,3 @@
-
 package edu.uth.jpa.controllers;
 
 import edu.uth.jpa.models.Appointment;
@@ -31,13 +30,22 @@ public class AppointmentController {
     @PostMapping("/save")
     public String saveAppointment(@ModelAttribute Appointment appointment) {
         appointmentRepository.save(appointment);
-        return "redirect:/customer/appointment/list";
+        return "redirect:/customer/appointment/list/" + appointment.getUsername() + "/" + appointment.getRole() ;
     }
 
     // 🟢 Hiển thị danh sách các lịch hẹn
-    @GetMapping("/list")
-    public String viewAppointments(Model model) {
-        List<Appointment> list = appointmentRepository.findAll();
+    @GetMapping("/list/{username}/{role}")
+    public String viewAppointments(@PathVariable("username")String username, @PathVariable("role")String role,  Model model) {
+        List<Appointment> list;
+
+        // Kiểm tra nếu là ADMIN, lấy tất cả các lịch hẹn, nếu không lấy theo username
+        if (role.equals("ROLE_ADMIN")) {
+            list = appointmentRepository.findAll();
+        } else {
+            list = appointmentRepository.findByUsername(username);
+        }
+
+        // Gán danh sách vào model và trả về view
         model.addAttribute("appointments", list);
         return "master/appointment-list";
     }
@@ -51,9 +59,9 @@ public class AppointmentController {
     }
 
     // 🔴 Xóa lịch hẹn
-    @GetMapping("/delete/{id}")
-    public String deleteAppointment(@PathVariable("id") Long id) {
+    @GetMapping("/delete/{id}/{username}/{role}")
+    public String deleteAppointment(@PathVariable("id") Long id, @PathVariable("username")String username, @PathVariable("role")String role) {
         appointmentRepository.deleteById(id);
-        return "redirect:/customer/appointment/list";
+        return "redirect:/customer/appointment/list/" + username + "/" + role ;
     }
 }

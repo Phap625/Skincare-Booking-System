@@ -60,7 +60,8 @@
             <div class="form-group mt-3">
                 <textarea th:field="*{message}" class="form-control" rows="5" placeholder="Message (Optional)"></textarea>
             </div>
-
+            <input type="hidden" id="username" name="username" th:value="${username}" />
+            <input type="hidden" id="role" name="role" th:value="${role}" />
             <div class="mt-3">
                 <div class="loading">Loading</div>
                 <div class="error-message"></div>
@@ -76,5 +77,15 @@
 
 <div th:replace="~{master/footer :: footer}"></div>
 </body>
-<script th:src="@{/assets/js/script.js}"></script>
+<script src="/assets/js/checkLogin.js"></script>
+<script>
+    window.onload = function() {
+        const username = localStorage.getItem("username");
+        const role = localStorage.getItem("role");
+        if (username && role) {
+            document.getElementById("username").value = username;
+            document.getElementById("role").value = role;
+        }
+    }
+</script>
 </html>

@@ -1,18 +1,11 @@
-
 package edu.uth.jpa.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Getter
-@Setter
-public class Appointment  {
+public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,15 +13,12 @@ public class Appointment  {
     private String name;
     private String email;
     private String phone;
-
-    private LocalDateTime date;
+    private String date;
     private String department;
     private String doctor;
     private String message;
 
-
-
-
-    public void setService(String service) {
-    }
+    private String service; // nếu có form đặt dịch vụ
+    private String username; // 🔥 thêm để lưu ai đã đặt
+    private String role;
 }

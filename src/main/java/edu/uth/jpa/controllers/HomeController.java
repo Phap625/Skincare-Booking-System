@@ -55,6 +55,8 @@ public class  HomeController {
         return "master/admin/index";
     }
 
-
-
+    @GetMapping("/appointment-list")
+    public String AppointmentPage() {
+        return "master/appointment-list";
+    }
 }
