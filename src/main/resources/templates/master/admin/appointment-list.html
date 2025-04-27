@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách đã đặt dịch vụ</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+        }
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar li {
+            flex: 1;
+        }
+
+        .navbar a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50; /* Màu xanh cho trang hiện tại */
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar">
+    <ul>
+        <li><a th:href="@{/list-user}" >📋 Quản lý người dùng</a></li>
+        <li><a th:href="@{/list-service}" class="active">🗓️ Danh sách lịch đặt</a></li>
+        <li><a th:href="@{/list-contact}">📝 Danh sách đánh giá</a></li>
+        <li><a href="#" id="logout-btn">🚪 Đăng Xuất</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <h1>Danh sách lịch đặt</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th>Ngày</th>
+            <th>Dịch vụ</th>
+            <th>Bác sĩ</th>
+            <th>Ghi chú</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="a : ${appointments}">
+            <td th:text="${a.name}">Tên</td>
+            <td th:text="${a.email}">Email</td>
+            <td th:text="${a.phone}">SĐT</td>
+            <td th:text="${a.date}">Ngày</td>
+            <td th:text="${a.department}">Dịch vụ</td>
+            <td th:text="${a.doctor}">Bác sĩ</td>
+            <td th:text="${a.message}">Ghi chú</td>
+            <td>
+                <a th:href="@{'/admin/appointment/edit/' + ${a.id}}" class="btn btn-edit">Sửa</a>
+            </td>
+            <td>
+                <a th:href="@{'/admin/appointment/delete/' + ${a.id}}" class="btn btn-delete"
+                   onclick="return confirm('Bạn có chắc muốn xóa không?');">Xóa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="text-align: right; margin-bottom: 15px;">
+        <a th:href="@{/customer/appointment}" class="btn" style="background-color: #28a745;">← Quay về đặt lịch</a>
+    </div>
+</div>
+</body>
+</html>

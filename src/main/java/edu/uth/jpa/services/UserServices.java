@@ -42,6 +42,8 @@ public class UserServices implements UserDetailsService  {
         user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
         user.setRole(registerDTO.getRole());
         user.setEmail(registerDTO.getEmail());
+        user.setPhone(registerDTO.getPhone());
+        user.setDob(registerDTO.getDob());
 
         userRepository.save(user);
         return "User registered successfully!";

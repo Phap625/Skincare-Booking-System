@@ -50,7 +50,7 @@
                 }
             } catch (error) {
                 console.error("Lỗi khi gọi API:", error);
-                alert("Có lỗi xảy ra, vui lòng thử lại!");
+                alert("Sai thông tin hoặc lỗi xác thực!");
             }
         });
 
@@ -68,6 +68,8 @@
             const username = document.getElementById("username-register").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password-register").value;
+            const phone= document.getElementById("phone").value;
+            const dob=document.getElementById("dob").value;
 
 
             if (!validateEmail(email)) {
@@ -86,7 +88,7 @@
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ username, email, password, role:"ROLE_CUSTOMER"})
+                    body: JSON.stringify({ username, email, password,phone,dob, role:"ROLE_CUSTOMER"})
                 });
 
                 const data = await response.text();

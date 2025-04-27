@@ -281,7 +281,8 @@ form {
 }
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+input[type="date"]{
   background-color: #eee;
   border: none;
   padding: 12px 15px;
@@ -291,3 +292,12 @@ input[type="password"] {
 .pass-link a {
   margin: 0;
 }
+/*input[type="date"] {*/
+/*  background-color: #f0f0f0;*/
+/*  border: none;*/
+/*  padding: 15px;*/
+/*  width: 100%;*/
+/*  border-radius: 5px;*/
+/*  margin-bottom: 20px;*/
+/*  font-size: 16px;*/
+/*}*/

@@ -44,12 +44,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     logoutButton.addEventListener("click", function (e) {
       e.preventDefault(); // Ngăn chặn hành động mặc định
       console.log("Người dùng đăng xuất");
+      localStorage.removeItem("role");
       localStorage.removeItem("token");
       localStorage.removeItem("username");
       window.location.reload();
     });
   }
 
+  // gọi API contact
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', async function(event) {
@@ -65,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       };
 
       // Lấy JWT token từ localStorage
-      const jwtToken = localStorage.getItem('jwtToken');
+      const jwtToken = localStorage.getItem('token');
 
       // Lấy các phần tử thông báo
       const loading = contactForm.querySelector('.loading');

@@ -30,13 +30,6 @@
             padding: 8px;
             margin: 5px 0;
         }
-        .form-container {
-            margin-top: 20px;
-            background: #fff;
-            padding: 15px;
-            border: 1px solid #ccc;
-            display: none;
-        }
         .navbar {
             background-color: #333;
             overflow: hidden;
@@ -77,51 +70,28 @@
 <body>
 <nav class="navbar">
     <ul>
-        <li><a th:href="@{/list-user}" class="active">📋 Quản lý người dùng</a></li>
+        <li><a th:href="@{/list-user}">📋 Quản lý người dùng</a></li>
         <li><a th:href="@{/list-service}">🗓️ Danh sách lịch đặt</a></li>
-        <li><a th:href="@{/list-contact}">📝 Danh sách đánh giá</a></li>
+        <li><a th:href="@{/list-contact}" class="active">📝 Danh sách đánh giá</a></li>
         <li><a href="#" id="logout-btn">🚪 Đăng Xuất</a></li>
     </ul>
 </nav>
 
-
-
-<h1>📋 Quản lý người dùng</h1>
-
-<button onclick="showAddUserForm()">➕ Thêm User Mới</button>
-
-<div class="form-container" id="formContainer">
-    <h3>➕ Thêm / Cập nhật User</h3>
-    <input type="hidden" id="userId">
-    <input type="text" id="username" placeholder="Tên người dùng"><br>
-    <input type="password" id="password" placeholder="Password" /><br>
-    <input type="email" id="email" placeholder="Email" /><br>
-    <input type="text" id="phone" name="phone" placeholder="Số điện thoại"><br>
-    <input type="text" id="role" placeholder="Vai trò"><br>
-    <input type="date" id="dob" placeholder="Ngày sinh"><br>
-    <button onclick="createOrUpdateUser()">Lưu</button>
-    <button onclick="cancelEdit()">Hủy</button>
-</div>
-
-<h3>📄 Danh sách Users</h3>
-<table id="userTable">
+<h1>📋 Danh sách đánh giá</h1>
+<table id="contactTable">
     <thead>
     <tr>
         <th>ID</th>
-        <th>Username</th>
-        <th>Password</th>
+        <th>Name</th>
         <th>Email</th>
-        <th>Role</th>
-        <th>Phone</th>
-        <th>Birthday</th>
-        <th>Action</th>
-    </tr>
+        <th>Subject</th>
+        <th>Message</th>
     </thead>
     <tbody>
     </tbody>
 </table>
 
-<script th:src="@{/assets/js/admin.js}">
+<script th:src="@{/assets/js/admin-contact.js}">
 
 </script>
 

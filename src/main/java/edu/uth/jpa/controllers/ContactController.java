@@ -1,12 +1,14 @@
 package edu.uth.jpa.controllers;
 
 import edu.uth.jpa.models.Contact;
+import edu.uth.jpa.models.User;
 import edu.uth.jpa.repositories.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -26,5 +28,12 @@ public class ContactController {
         contactRepository.save(contact);
         // Trả về phản hồi thành công
         return ResponseEntity.ok(Map.of("message", "Contact form submitted successfully"));
+    }
+
+    @GetMapping("/admin/contact")
+    public ResponseEntity<List<Contact>> getAllUsers() {
+
+        List<Contact> contacts = contactRepository.findAll();
+        return ResponseEntity.ok(contacts);
     }
 }

@@ -55,6 +55,13 @@ public class  HomeController {
         return "master/admin/index";
     }
 
+    @GetMapping("/list-contact")
+    public String adminContactPage() {return "master/admin/contact-list"; }
+
+    @GetMapping("/list-service")
+    public String adminServicePage() {return "master/admin/appointment-list"; }
+
+
 
 
 }
