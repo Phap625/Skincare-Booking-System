@@ -1,10 +1,8 @@
-
 package edu.uth.jpa.controllers;
 
 import edu.uth.jpa.models.Appointment;
 import edu.uth.jpa.repositories.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -30,17 +28,28 @@ public class AppointmentController {
 
     // 🟢 Lưu mới hoặc cập nhật lịch hẹn
     @PostMapping("/save")
-    public ResponseEntity<String> saveAppointment(@ModelAttribute Appointment appointment) {
+    public String saveAppointment(@ModelAttribute Appointment appointment) {
         appointmentRepository.save(appointment);
-        return ResponseEntity.ok("Đặt lịch thành công");
+
+        return "redirect:/customer/appointment/list/" + appointment.getUsername() + "/" + appointment.getRole() ;
+
     }
 
     // 🟢 Hiển thị danh sách các lịch hẹn
-    @GetMapping("/list")
-    public String viewAppointments(Model model) {
-        List<Appointment> list = appointmentRepository.findAll();
+    @GetMapping("/list/{username}/{role}")
+    public String viewAppointments(@PathVariable("username")String username, @PathVariable("role")String role,  Model model) {
+        List<Appointment> list;
+
+        // Kiểm tra nếu là ADMIN, lấy tất cả các lịch hẹn, nếu không lấy theo username
+        if (role.equals("ROLE_ADMIN")) {
+            list = appointmentRepository.findAll();
+        } else {
+            list = appointmentRepository.findByUsername(username);
+        }
+
+        // Gán danh sách vào model và trả về view
         model.addAttribute("appointments", list);
-        return "/master/admin/appointment-list";
+        return "/master/appointment-list";
     }
 
      //🟡 Sửa lịch hẹn
@@ -52,9 +61,9 @@ public class AppointmentController {
     }
 
     // 🔴 Xóa lịch hẹn
-    @GetMapping("/delete/{id}")
-    public String deleteAppointment(@PathVariable("id") Long id) {
+    @GetMapping("/delete/{id}/{username}/{role}")
+    public String deleteAppointment(@PathVariable("id") Long id, @PathVariable("username")String username, @PathVariable("role")String role) {
         appointmentRepository.deleteById(id);
-        return "redirect:/customer/appointment/list";
+        return "redirect:/customer/appointment/list/" + username + "/" + role ;
     }
 }

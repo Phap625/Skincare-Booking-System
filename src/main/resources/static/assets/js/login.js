@@ -8,7 +8,6 @@
         loginButton.addEventListener("click", async (event) => {
             event.preventDefault(); // Ngăn trang reload mặc định
 
-
             // Lấy dữ liệu từ input
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;

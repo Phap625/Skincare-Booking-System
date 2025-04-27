@@ -36,8 +36,8 @@
                     <span id="usernameDisplay"></span> <i class="bi bi-chevron-down toggle-dropdown"></i>
                     <ul>
                         <li><a th:href="@{/user/profile}">Thông tin</a></li>
-                        <li><a href="#">Đăng xuất</a></li>
-
+                        <li><a  id="appointmentLink">Xem danh sách đã đặt lịch</a></li>
+                        <li><a href="#" id="logoutId">Đăng xuất</a></li>
                     </ul>
                 </li>
 
@@ -48,5 +48,16 @@
         <a class="cta-btn" th:href="@{/customer/appointment}">Đặt dịch vụ</a>
 
     </div>
+    <script src="/assets/js/auth.js"></script>
+    <script>
+        window.onload = function() {
+            const username = localStorage.getItem("username");
+            const role = localStorage.getItem("role");
+            if (username && role) {
+                document.getElementById("appointmentLink").href = `/customer/appointment/list/${username}/${role}`;
+            }
+        }
+    </script>
 </div>
+
 

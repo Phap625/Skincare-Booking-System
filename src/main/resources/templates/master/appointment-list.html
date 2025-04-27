@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách đã đặt dịch vụ</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f3f3f6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        th {
+            background: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn-edit {
+            background-color: #ffc107;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+        }
+        .btn-back {
+            background-color: #28a745;
+            margin-top: 20px;
+            display: inline-block;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Danh sách người đã đặt dịch vụ</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Họ tên</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th>Ngày</th>
+            <th>Dịch vụ</th>
+            <th>Bác sĩ</th>
+            <th>Ghi chú</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="a : ${appointments}">
+            <td th:text="${a.name}">Tên</td>
+            <td th:text="${a.email}">Email</td>
+            <td th:text="${a.phone}">SĐT</td>
+            <td th:text="${a.date}">Ngày</td>
+            <td th:text="${a.department}">Dịch vụ</td>
+            <td th:text="${a.doctor}">Bác sĩ</td>
+            <td th:text="${a.message}">Ghi chú</td>
+            <td>
+                <a th:href="@{'/customer/appointment/edit/' + ${a.id}}" class="btn btn-edit protected-link">Sửa</a>
+                <input type="hidden" id="IdAppointment"  th:value="${a.id}" />
+            </td>
+            <td>
+                <button class="btn btn-delete protected-link" id="btnDelete"
+                        th:data-id="${a.id}" onclick="onDelete(this)">Xóa</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div style="text-align: right;">
+        <a th:href="@{/customer/appointment}" class="btn btn-back">← Quay về đặt lịch</a>
+    </div>
+</div>
+<script src="/assets/js/checkLogin.js"></script>
+<script src="/assets/js/script.js"></script>
+<script >
+    window.onload = function() {
+        const username = localStorage.getItem("username");
+        const role = localStorage.getItem("role");
+        if (username && role) {
+            document.getElementById("btnDelete").href = `/customer/appointment/list/${username}/${role}`;
+        }
+    }
+    const onDelete = (button) => {
+        const isConfirm = confirm('Bạn có chắc muốn xóa không?');
+        if (isConfirm) {
+            const username = localStorage.getItem("username");
+            const role = localStorage.getItem("role");
+            const appointmentId = button.getAttribute("data-id");  // Lấy giá trị từ data-id
+             window.location.href = `/customer/appointment/delete/${appointmentId}/${username}/${role}`;
+        }
+    };
+
+</script>
+
+</body>
+</html>
