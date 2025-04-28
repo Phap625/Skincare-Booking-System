@@ -78,14 +78,14 @@
 <div th:replace="~{master/footer :: footer}"></div>
 </body>
 <script th:src="@{/assets/js/script.js}"></script>
-<!--<script>-->
-<!--    window.onload = function() {-->
-<!--        const username = localStorage.getItem("username");-->
-<!--        const role = localStorage.getItem("role");-->
-<!--        if (username && role) {-->
-<!--            document.getElementById("username").value = username;-->
-<!--            document.getElementById("role").value = role;-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
+<script>
+    window.onload = function() {
+        const username = localStorage.getItem("username");
+        const role = localStorage.getItem("role");
+        if (username && role) {
+            document.getElementById("username").value = username;
+            document.getElementById("role").value = role;
+        }
+    }
+</script>
 </html>
