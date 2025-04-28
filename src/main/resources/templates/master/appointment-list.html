@@ -106,8 +106,8 @@
         <a th:href="@{/customer/appointment}" class="btn btn-back">← Quay về đặt lịch</a>
     </div>
 </div>
-<script src="/assets/js/checkLogin.js"></script>
-<script src="/assets/js/script.js"></script>
+<script th:src="@{/assets/js/checkLogin.js}"></script>
+<script th:src="@{/assets/js/script.js}"></script>
 <script >
     window.onload = function() {
         const username = localStorage.getItem("username");

@@ -78,7 +78,7 @@
 <nav class="navbar">
     <ul>
         <li><a th:href="@{/list-user}" class="active">📋 Quản lý người dùng</a></li>
-        <li><a th:href="@{/appointment-list}">🗓️ Danh sách lịch đặt</a></li>
+        <li><a onclick="goAppointmentList()">🗓️ Danh sách lịch đặt</a></li>
         <li><a th:href="@{/list-contact}">📝 Danh sách đánh giá</a></li>
         <li><a href="#" id="logout-btn">🚪 Đăng Xuất</a></li>
     </ul>
@@ -89,7 +89,7 @@
 <h1>📋 Quản lý người dùng</h1>
 
 <button onclick="showAddUserForm()">➕ Thêm User Mới</button>
-<button onclick="goAppointmentList()" >Xem danh sách đã đặt lịch</button>
+<!--<button onclick="goAppointmentList()" >Xem danh sách đã đặt lịch</button>-->
 
 <div class="form-container" id="formContainer">
     <h3>➕ Thêm / Cập nhật User</h3>
